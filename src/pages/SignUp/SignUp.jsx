@@ -94,7 +94,10 @@ const SignUp = () => {
                     {/* email */}
                     <div className="form-control">
                        
-                            <input type="email" {...register("email", { required: true })} placeholder="email" name='email' className="input input-bordered" />
+                            <input type="email" {...register("email", {
+                                 required: true
+                                //  pattern:/(?=.*[a-z])(?=.*[0-9])+@+(gmail.com)/ 
+                                 })} placeholder="email" name='email' className="input input-bordered" />
                         {errors.email && <span className="text-red-600">This field is required</span>}
                     </div>
 
