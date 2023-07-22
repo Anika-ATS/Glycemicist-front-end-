@@ -15,7 +15,7 @@ const Footer = () => {
                     <p className="font-bold mt-2">
                         An intelligent web app that accurately predicts diabetic risk for patients, while delivering a comprehensive healthcare overview, empowering individuals to take charge of their health with personalized insights and proactive measures.
                     </p>
-                    <p className="font-bold mt-1">Copyright © 2023 - All right reserved</p>
+                    <p className="font-bold mt-1 ">Copyright © 2023 - All right reserved</p>
                 </div>
                 
                     {/* <div className="grid grid-flow-col gap-4">
