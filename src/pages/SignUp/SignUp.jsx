@@ -133,7 +133,7 @@ const SignUp = () => {
                     {/* height */}
                     <div className="form-control">                          
                         <input type="text" {...register("height", { required: true})} placeholder="Your Height" name='height' className="input input-bordered" />
-                        {errors.height && <span className="text-red-600">This field is required</span>}
+                        {errors.height && <span className="text-red-600 ">This field is required</span>}
                         
                     </div>
 

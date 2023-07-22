@@ -1,6 +1,6 @@
 import { Controller, useForm } from 'react-hook-form';
 import Dp1 from '../../assets/Images/Dprediction1.webp'
-import { Link } from 'react-router-dom';
+
 
 const DPrediction = () => {
 
@@ -37,22 +37,26 @@ const DPrediction = () => {
                         {/* f1=HighBp */}
                         <div className="form-control ">
                             
-                            <label className=' mx-auto w-11/12 text-xl text-cyan-500 mb-2' >
+                            <label className=' mx-auto w-11/12 text-xl text-cyan-500 mb-2 ' >
                                 Do you have high Blood Pressure ?
                                 <Controller
-                                    name="checkboxField1" // The name used for the field in the data object
+                                    name="checkboxField1"   // The name used for the field in the data object
                                     control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
+                                    // defaultValue={false} // Set the initial value of the checkbox
                                     render={({ field }) => (
-                                        <select className='mt-3 w-full mb-2' {...field}>
+                                        <select {...register("checkboxField1", {
+                                            required: true})}
+                                             className='mt-3 w-full mb-2 text-black border border-cyan-600' {...field}>
+                                          <option selected disabled></option>
+                                          <option value="option1"  >Yes</option>
+                                          <option value="option2">No</option>
                                         
-                                        <option value="option1">Yes</option>
-                                        <option value="option2">No</option>
-                                        
-                                      </select>)}
+                                        </select>
+                                    )}
                                 />
+                                {errors.checkboxField1 && <div className=" text-red-600">This field is required</div>}
                             </label>
-                            {errors.checkboxField1 && <span className="text-red-600">This field is required</span>}
+                            
                         </div>
                         {/* f2=HighChol */}
                         <div className="form-control ">
@@ -62,77 +66,69 @@ const DPrediction = () => {
                                 <Controller
                                     name="checkboxField2" // The name used for the field in the data object
                                     control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
+                                    // defaultValue={false} // Set the initial value of the checkbox
                                     render={({ field }) => (
-                                        <select className='mt-3 w-full mb-2' {...field}>
+                                        <select {...register("checkboxField2", {
+                                            required: true})} defaultValue={'DEFAULT'} className='mt-3 w-full mb-2 text-black border border-cyan-600' {...field}>
+                                           <option value="DEFAULT" disabled ></option>
+                                           <option value="option1">Yes</option>
+                                           <option value="option2">No</option>
                                         
-                                        <option value="option1">Yes</option>
-                                        <option value="option2">No</option>
-                                        
-                                      </select>)}
+                                        </select>
+                                    )}
                                 />
+                                {errors.checkboxField2 && <div className="text-red-600">This field is required</div>}
                             </label>
-                            {errors.checkboxField2 && <span className="text-red-600">This field is required</span>}
-                        </div>
-                        {/* f3=Cholesterol Check */}
-                        {/* <div className="form-control ">
                             
-                            <label className=' mx-auto w-11/12 text-2xl text-cyan-500 ' >
-                                Do you  check cholesterol in last 5 years?
-                                <Controller
-                                    name="checkboxField3" // The name used for the field in the data object
-                                    control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
-                                    render={({ field }) => (
-                                        <select className='mt-3 w-full' {...field}>
-                                        
-                                        <option value="option1">Yes</option>
-                                        <option value="option2">No</option>
-                                        
-                                      </select>)}
-                                />
-                            </label>
-                            {errors.checkboxField3 && <span className="text-red-600">This field is required</span>}
-                        </div> */}
+                        </div>
+                       
                         {/* f4=fruit */}
                         <div className="form-control ">
                             
                             <label className=' mx-auto w-11/12 text-xl text-cyan-500 mb-2' >
-                               Do you consume Fruit 1 or more times per day?
+                               Consume Fruit 1 or more times per day?
                                 <Controller
-                                    name="checkboxField4" // The name used for the field in the data object
+                                    name="checkboxField3" // The name used for the field in the data object
                                     control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
+                                    // defaultValue={false} // Set the initial value of the checkbox
                                     render={({ field }) => (
-                                        <select className='mt-3 w-full mb-2' {...field}>
+                                        <select {...register("checkboxField3", {
+                                            required: true})} defaultValue={'DEFAULT'} className='mt-3 w-full mb-2 text-black border border-cyan-600' {...field}>
+                                           <option value="DEFAULT" disabled ></option>
                                         
-                                        <option value="option1">Yes</option>
-                                        <option value="option2">No</option>
+                                           <option value="option1">Yes</option>
+                                           <option value="option2">No</option>
                                         
-                                      </select>)}
+                                        </select>
+                                    )}
                                 />
+                                 {errors.checkboxField3 && <div className="text-red-600">This field is required</div>}
                             </label>
-                            {errors.checkboxField4 && <span className="text-red-600">This field is required</span>}
+                           
                         </div>
                         {/* f5=Veggies */}
                         <div className="form-control ">
                             
                             <label className=' mx-auto w-11/12 text-xl text-cyan-500 mb-2 ' >
-                            Do you consume Vegetables 1 or more times per day?
+                             Consume Vegetables 1 or more times per day?
                                 <Controller
-                                    name="checkboxField5" // The name used for the field in the data object
+                                    name="checkboxField4" // The name used for the field in the data object
                                     control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
+                                    // defaultValue={false} // Set the initial value of the checkbox
                                     render={({ field }) => (
-                                        <select className='mt-3 w-full my-3' {...field}>
+                                        <select {...register("checkboxField4", {
+                                            required: true})} defaultValue={'DEFAULT'} className='mt-3 w-full my-3 text-black border border-cyan-600' {...field}>
+                                            <option value="DEFAULT" disabled ></option>
                                         
-                                        <option value="option1">Yes</option>
-                                        <option value="option2">No</option>
+                                            <option value="option1">Yes</option>
+                                            <option value="option2">No</option>
                                         
-                                      </select>)}
+                                        </select>
+                                    )}
                                 />
+                                {errors.checkboxField4 && <div className="text-red-600">This field is required</div>}
                             </label>
-                            {errors.checkboxField5 && <span className="text-red-600">This field is required</span>}
+                            
                         </div>
                         {/* f6=PhyActivity */}
                         <div className="form-control ">
@@ -140,19 +136,23 @@ const DPrediction = () => {
                             <label className=' mx-auto w-11/12 text-xl text-cyan-500 mb-3' >
                             Did you engaged in any physical activity to maintain your well-being or improve your health in past 30 days?
                                 <Controller
-                                    name="checkboxField6" // The name used for the field in the data object
+                                    name="checkboxField5" // The name used for the field in the data object
                                     control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
+                                    // defaultValue={false} // Set the initial value of the checkbox
                                     render={({ field }) => (
-                                        <select className='mt-3 w-full mb-2' {...field}>
+                                        <select {...register("checkboxField5", {
+                                            required: true})} defaultValue={'DEFAULT'} className='mt-3 w-full mb-2 text-black border border-cyan-600' {...field}>
+                                            <option value="DEFAULT" disabled ></option>
                                         
-                                        <option value="option1">Yes</option>
-                                        <option value="option2">No</option>
+                                            <option value="option1">Yes</option>
+                                            <option value="option2">No</option>
                                         
-                                      </select>)}
+                                        </select>
+                                    )}
                                 />
+                                {errors.checkboxField5 && <div className="text-red-600">This field is required</div>}
                             </label>
-                            {errors.checkboxField6 && <span className="text-red-600">This field is required</span>}
+                            
                         </div>
 
                        
@@ -162,41 +162,45 @@ const DPrediction = () => {
                             <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 mb-2 ' >
                             Would you say that in general your health is?
                                 <Controller
-                                    name="checkboxField7" // The name used for the field in the data object
+                                    name="checkboxField6" // The name used for the field in the data object
                                     control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
+                                    // defaultValue={false} // Set the initial value of the checkbox
                                     render={({ field }) => (
-                                        <select className='mt-3 w-full mb-2' {...field}>
+                                        <select {...register("checkboxField6", {
+                                            required: true})} defaultValue={'DEFAULT'} className='mt-3 w-full mb-2 text-black border border-cyan-600' {...field}>
+                                            <option value="DEFAULT" disabled ></option>
                                         
-                                        <option value="option1">Excellent</option>
-                                        <option value="option2">Very Good</option>
-                                        <option value="option2"> Good</option>
-                                        <option value="option2">Poor</option>
+                                            <option value="option1">Excellent</option>
+                                            <option value="option2">Very Good</option>
+                                            <option value="option2"> Good</option>
+                                            <option value="option2">Poor</option>
                                         
-                                      </select>)}
+                                        </select>
+                                    )}
                                 />
+                                {errors.checkboxField6 && <div className="text-red-600">This field is required</div>}
                             </label>
-                            {errors.checkboxField7 && <span className="text-red-600">This field is required</span>}
+                            
                         </div>
 
                         {/* f8=Mental Health */}
                         <div className="form-control ">
                             
-                            <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 my-2' >
-                            Now thinking about your mental health,  which includes stress, depression, and problems with emotions, for how many days during the past 30?
-                            <input  type="number"  {...register("NumDays", { required: true })} placeholder="Mental health days" name='NumDays' className="mt-3 mx-auto w-11/12 text-cyan-500 input input-bordered my-2" />
-                           {errors.NumDays && <span className="text-red-600">This field is required</span>}
-                            </label>
+                                <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 my-2' >
+                                Now thinking about your mental health,  which includes stress, depression, and problems with emotions, for how many days during the past 30?
+                                <input  type="number"  {...register("NumDays", { required: true })} placeholder="Mental health days" name='NumDays' className="mt-3 mx-auto w-11/12 text-black input input-bordered my-2 border border-cyan-600" />
+                                {errors.NumDays && <div className="text-red-600">This field is required</div>}
+                                </label>
                           
                         </div>
                         {/* f9=Physical Health */}
                         <div className="form-control ">
                             
-                            <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 my-2 ' >
-                            Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30?
-                            <input  type="number"  {...register("NumDaysPH", { required: true })} placeholder="Pysical health days" name='NumDaysPH' className="mt-3 mx-auto w-11/12 text-cyan-500 input input-bordered my-2" />
-                            {errors.NumDaysPH && <span className="text-red-600">This field is required</span>}
-                            </label>
+                                <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 my-2 ' >
+                                Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30?
+                                <input  type="number"  {...register("NumDaysPH", { required: true })} placeholder="Pysical health days" name='NumDaysPH' className="border border-cyan-600 mt-3 mx-auto w-11/12 text-black input input-bordered my-2" />
+                                {errors.NumDaysPH && <div className="text-red-600">This field is required</div>}
+                                </label>
                          
                         </div>
                      
@@ -207,19 +211,23 @@ const DPrediction = () => {
                             <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 my-1' >
                             Do you have any history of heart disease or heart-related health issues?
                                 <Controller
-                                    name="checkboxField8" // The name used for the field in the data object
+                                    name="checkboxField7" // The name used for the field in the data object
                                     control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
+                                    // defaultValue={false} // Set the initial value of the checkbox
                                     render={({ field }) => (
-                                        <select className='mt-3 w-full my-1' {...field}>
+                                        <select {...register("checkboxField7", {
+                                            required: true})} defaultValue={'DEFAULT'} className='mt-3 w-full my-1 text-black border border-cyan-600' {...field}>
+                                            <option value="DEFAULT" disabled ></option>
                                         
-                                        <option value="option1">Yes</option>
-                                        <option value="option2">No</option>
+                                            <option value="option1">Yes</option>
+                                            <option value="option2">No</option>
                                         
-                                      </select>)}
+                                        </select>
+                                    )}
                                 />
+                                {errors.checkboxField7 && <div className="text-red-600">This field is required</div>}
                             </label>
-                            {errors.checkboxField8 && <span className="text-red-600">This field is required</span>}
+                            
                         </div>
                         {/* f11=Gender */}
                         <div className="form-control ">
@@ -227,20 +235,24 @@ const DPrediction = () => {
                             <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 ' >
                             Gender:
                                 <Controller
-                                    name="checkboxField9" // The name used for the field in the data object
+                                    name="checkboxField8" // The name used for the field in the data object
                                     control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
+                                    // defaultValue={false} // Set the initial value of the checkbox
                                     render={({ field }) => (
-                                        <select className='mt-3 w-full' {...field}>
+                                        <select {...register("checkboxField8", {
+                                            required: true})} defaultValue={'DEFAULT'} className='mt-3 w-full text-black border border-cyan-600' {...field}>
+                                            <option value="DEFAULT" disabled ></option>
                                         
-                                        <option value="option1">Female</option>
-                                        <option value="option2">Male</option>
+                                            <option value="option1">Female</option>
+                                            <option value="option2">Male</option>
                                       
                                         
-                                      </select>)}
+                                          </select>
+                                    )}
                                 />
+                                {errors.checkboxField8 && <div className="text-red-600">This field is required</div>}
                             </label>
-                            {errors.checkboxField9 && <span className="text-red-600">This field is required</span>}
+                            
                         </div>
 
 
@@ -249,32 +261,36 @@ const DPrediction = () => {
                        <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 ' >
                         Your Age?
                         <Controller
-                                    name="checkboxField10" // The name used for the field in the data object
+                                    name="checkboxField9" // The name used for the field in the data object
                                     control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
+                                    // defaultValue={false} // Set the initial value of the checkbox
                                     render={({ field }) => (
-                                        <select className='mt-3 w-full' {...field}>
+                                        <select {...register("checkboxField9", {
+                                            required: true})} defaultValue={'DEFAULT'} className='mt-3 w-full text-black border border-cyan-600' {...field}>
+                                            <option value="DEFAULT" disabled ></option>
                                         
-                                        <option value="option1">Age 18 to 24</option>
-                                        <option value="option2">Age 25 to 29</option>
-                                        <option value="option3">Age 30 to 34</option>
-                                        <option value="option4">Age 35 to 39</option>
-                                        <option value="option5">Age 40 to 44</option>
-                                        <option value="option6">Age 45 to 49</option>
-                                        <option value="option7">Age 50 to 54</option>
-                                        <option value="option8">Age 55 to 59</option>
-                                        <option value="option9">Age 60 to 64</option>
-                                        <option value="option10">Age 65 to 69</option>
-                                        <option value="option11">Age 70 to 74</option>
-                                        <option value="option12">Age 75 to 79</option>
-                                        <option value="option13">Age 80 or older</option>
+                                            <option value="option1">Age 18 to 24</option>
+                                            <option value="option2">Age 25 to 29</option>
+                                            <option value="option3">Age 30 to 34</option>
+                                            <option value="option4">Age 35 to 39</option>
+                                            <option value="option5">Age 40 to 44</option>
+                                            <option value="option6">Age 45 to 49</option>
+                                            <option value="option7">Age 50 to 54</option>
+                                            <option value="option8">Age 55 to 59</option>
+                                            <option value="option9">Age 60 to 64</option>
+                                            <option value="option10">Age 65 to 69</option>
+                                            <option value="option11">Age 70 to 74</option>
+                                            <option value="option12">Age 75 to 79</option>
+                                            <option value="option13">Age 80 or older</option>
                                         
                                       
                                         
-                                      </select>)}
+                                        </select>
+                                    )}
                                 />
+                                 {errors.checkboxField9 && <div className="text-red-600">This field is required</div>}
                        </label>
-                       {errors.checkboxField10 && <span className="text-red-600">This field is required</span>}
+                      
                        </div>
 
                        {/* {f13=Income} */}
@@ -282,27 +298,31 @@ const DPrediction = () => {
                        <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 ' >
                             Your Income scale?
                             <Controller
-                                    name="checkboxField11" // The name used for the field in the data object
+                                    name="checkboxField10" // The name used for the field in the data object
                                     control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
+                                    // defaultValue={false} // Set the initial value of the checkbox
                                     render={({ field }) => (
-                                        <select className='mt-3 w-full' {...field}>
-                                        
-                                        <option value="option1">Less than $10,000</option>
-                                        <option value="option2">Less than $15,000</option>
-                                        <option value="option3">Less than $20,000</option>
-                                        <option value="option4">Less than $25,000</option>
-                                        <option value="option5">Less than $35,000</option>
-                                        <option value="option6">Less than $50,000</option>
-                                        <option value="option7">Less than $75,000</option>
-                                        <option value="option8"> $75,000 or more</option>
+                                        <select {...register("checkboxField10", {
+                                            required: true})} defaultValue={'DEFAULT'} className='mt-3 w-full text-black border border-cyan-600' {...field}>
+                                            <option value="DEFAULT" disabled ></option>
+                                            
+                                            <option value="option1">Less than $10,000</option>
+                                            <option value="option2">Less than $15,000</option>
+                                            <option value="option3">Less than $20,000</option>
+                                            <option value="option4">Less than $25,000</option>
+                                            <option value="option5">Less than $35,000</option>
+                                            <option value="option6">Less than $50,000</option>
+                                            <option value="option7">Less than $75,000</option>
+                                            <option value="option8"> $75,000 or more</option>
                                         
                                       
                                         
-                                      </select>)}
+                                        </select>
+                                    )}
                                 />
+                                {errors.checkboxField10 && <div className="text-red-600">This field is required</div>}
                        </label>
-                       {errors.checkboxField11 && <span className="text-red-600">This field is required</span>}
+                       
                        </div>
 
                        {/* {f14=Education} */}
@@ -310,33 +330,37 @@ const DPrediction = () => {
                        <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 ' >
                             Your education level?
                             <Controller
-                                    name="checkboxField12" // The name used for the field in the data object
+                                    name="checkboxField11" // The name used for the field in the data object
                                     control={control} // The RHF control instance
-                                    defaultValue={false} // Set the initial value of the checkbox
+                                    // defaultValue={false} // Set the initial value of the checkbox
                                     render={({ field }) => (
-                                        <select className='mt-3 w-full' {...field}>
-                                        
-                                        <option value="option1">Never Attended school or any kindergarten.</option>
-                                        <option value="option2">Grsdes 1 through 8(Elementary)</option>
-                                        <option value="option3">Grsdes 9 through 11(Some high School )</option>
-                                        <option value="option4">Grsdes 12 or GED(High School Graduate)</option>
-                                        <option value="option5">College 1 years to 3 years(Some College or technical School)</option>
-                                        <option value="option6">College 4 years or more(College Graduate)</option>
+                                        <select {...register("checkboxField11", {
+                                            required: true})} defaultValue={'DEFAULT'} className=' mt-3 w-full text-black border border-cyan-600' {...field}>
+                                            <option value="DEFAULT" disabled ></option>
+                                            
+                                            <option value="option1 " >Never Attended school or any kindergarten.</option>
+                                            <option value="option2">Grsdes 1 through 8(Elementary)</option>
+                                            <option value="option3">Grsdes 9 through 11(Some high School )</option>
+                                            <option value="option4">Grsdes 12 or GED(High School Graduate)</option>
+                                            <option value="option5">College 1 years to 3 years(Some College or technical School)</option>
+                                            <option value="option6">College 4 years or more(College Graduate)</option>
                                       
-                                        <option value="option7">Refused</option>
+                                       
                                      
-                                      </select>)}
+                                        </select>
+                                    )}
                                 />
+                                {errors.checkboxField11 && <div className="text-red-600">This field is required</div>}
                             </label>
-                            {errors.checkboxField12 && <span className="text-red-600">This field is required</span>}
+                            
                        </div>
                         {/* {f15=BMI} */}
                         <div className="form-control ">
-                       <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 ' >
-                            Your BMI?
-                       <input  type="Number"  {...register("BMI", { required: true })} placeholder="BMI" name='BMI' className="mt-3 mx-auto w-11/12 text-cyan-500 input input-bordered" />
-                       {errors.BMI && <span className="text-red-600">This field is required</span>}
-                       </label>
+                            <label className='py-3 mx-auto w-11/12 text-xl text-cyan-500 ' >
+                                    Your BMI?
+                            <input  type="number" step='0.1'  {...register("BMI", { required: true })} placeholder="BMI" name='BMI' className="mt-3 mx-auto w-11/12 text-black input input-bordered border border-cyan-600" />
+                            {errors.BMI && <div className="text-red-600 ">This field is required</div>}
+                            </label>
                        </div>
 
 
