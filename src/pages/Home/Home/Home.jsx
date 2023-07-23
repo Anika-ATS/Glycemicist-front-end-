@@ -1,9 +1,15 @@
+import Appointment from "../Appointment/Appointment";
+import Banner from "../Banner/Banner";
+import Services from "../Services/Services";
 
 
 const Home = () => {
     return (
         <div>
-            <h2></h2>
+            <Banner></Banner>
+            <Services></Services>
+            <Appointment></Appointment>
+
         </div>
     );
 };
