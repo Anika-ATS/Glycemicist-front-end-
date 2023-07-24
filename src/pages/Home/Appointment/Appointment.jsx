@@ -1,5 +1,6 @@
 
 import { Controller, useForm } from 'react-hook-form';
+import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 
 
 
@@ -17,15 +18,25 @@ const Appointment = () => {
 
 
     return (
-        <div className="hero min-h-screen ">
-
-
-            <div className="card mx-auto   w-full max-w-sm shadow-2xl bg-cyan-300">
+        <div >
+        
+        <div className='mb-0'>
+        
+        <SectionTitle
+        subHeading={'Consult Your Doctor'}
+        Heading={'Book an Appointment'}
+        
+        ></SectionTitle>
+        </div>
+    
+        <div className="hero min-h-screen  ">
+            
+            <div className="card mx-auto w-full max-w-sm shadow-2xl bg-cyan-300 ">
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 
                     <div className="form-control ">
 
-                        <input type="text"  {...register("name", { required: true })} placeholder="Name" name='name' className="input input-bordered" />
+                        <input type="text"  {...register("name", { required: true })} placeholder="Your Name" name='name' className="input input-bordered" />
                         {errors.name && <span className="text-red-600">This field is required</span>}
                     </div>
                     {/* Age */}
@@ -41,7 +52,7 @@ const Appointment = () => {
 
                             }}
                             render={({ field }) => (
-                                <input type="number" className='py-3  input input-bordered' placeholder="Age" {...field} />
+                                <input type="number" className='py-3  input input-bordered' placeholder="Your Age" {...field} />
                             )}
                         />
                         {errors.age && <div className='text-red-600'>Age must be 18 or older than 18</div>}
@@ -62,9 +73,27 @@ const Appointment = () => {
                             //   },
                             //  pattern:/(?=.*[a-z])(?=.*[0-9])+@+(gmail.com)/
 
-                        })} placeholder="email" name='email' className="input input-bordered" />
+                        })} placeholder="Your email" name='email' className="input input-bordered" />
                         {errors.email && <span className="text-red-600">This field is required</span>}
                     </div>
+
+                    {/*Doctors email */}
+                    <div className="form-control">
+
+                        <input type="email" {...register("email", {
+                            required: true
+                            // pattern: {
+                            //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/,
+                            //     message: 'Invalid email address',
+                            //   },
+                            //  pattern:/(?=.*[a-z])(?=.*[0-9])+@+(gmail.com)/
+
+                        })} placeholder="Doctor's email" name='DoctorEmail' className="input input-bordered" />
+                        {errors.DoctorEmail && <span className="text-red-600">This field is required</span>}
+                    </div>
+
+
+
                     {/* phone number */}
                     <div>
 
@@ -92,6 +121,15 @@ const Appointment = () => {
                         {errors.Msg && <span className="text-red-600 ">This field is required</span>}
 
                     </div>
+                     {/* Date */}
+                     <div className="form-control">
+                        <input type="date" {...register("date", {
+                            required: true,
+                            // value:
+                        })} placeholder="Date" name='date' className="input input-bordered" />
+                        {errors.date && <span className="text-red-600 ">This field is required</span>}
+
+                    </div>
 
 
 
@@ -106,7 +144,9 @@ const Appointment = () => {
                 </form>
             </div>
 
+     
         </div >
+        </div>
     );
 };
 
