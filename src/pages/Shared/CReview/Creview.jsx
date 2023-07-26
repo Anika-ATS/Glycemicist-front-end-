@@ -3,29 +3,31 @@
 // const {  picture, name,ClientReview } = props.rate;
 
 const Creview = ({ msg }) => {
-    const { _id, picture, name, ClientReview } = msg || {};
+    const { _id, picture, name, ClientReview } = msg;
     // console.log(_id,  picture, name, ClientReview )
+    // className=" w-11 overflow-x-auto  rounded-full" // 
     return (
-        <div className="container mx-auto flex x-space-4 gap-3 py-5 mb-5 ">
-            <div className="card  w-96 bg-base-100 shadow-xl">
-                <figure className="px-10 pt-5 ">
-                    <img src={picture}  className="rounded-xl" />
-                </figure>
+        <div>
+            <div className=" grid place-items-center animate-bounce  " >
+                <div className="mt-5 avatar">
+                    <div className=" w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 ">
+                        <img src={picture} />
+                    </div>
+                </div>
+            </div>
+            <div className=" container mx-auto flex x-space-4 gap-3 py-5 mb-5 hover:scale-75 translate-x-4 skew-y-3  ">
 
-                
-                <div className="card-body">
+                <div className="group card  w-96 bg-base-100 shadow-xl border border-blue hover:bg-gradient-to-r from-purple-500 to-pink-500 skew-y-3 gap-6 mt-3 ">
+                  <div className="card-body  ">
+                        <h2 className="card-title">
+                            <h3 className="3xl mx-auto  animate-pulse  text-cyan-500 group-hover:text-white">{name}</h3>
 
-                  
-                    <h2 className="card-title">
-                        <h3 className="3xl text-cyan ">{name}</h3>
+                        </h2>
+                        <p className='text-cyan-500 group-hover:text-white '>{ClientReview}</p>
 
-                        {/* <div className="badge bg-cyan-600 text-white">Risk Prediction</div> */}
-
-                    </h2>
-                    <p className='text-cyan-500 '>{ClientReview}</p>
+                    </div>
 
                 </div>
-                
             </div>
 
 
@@ -43,36 +45,14 @@ const Creview = ({ msg }) => {
 
                 </div>
 
-
+            
             </div> */}
         </div>
     );
 };
 
 export default Creview;
-{/* <div className='flex gap-4'>
-                    <div className="card w-44 bg-base-100 shadow-xl">
-                        <div >
-                            <p className=' h-32 bg-base-white text-cyan-500'>I had concerns about my diabetes risk, but thanks to this prediction service, I got valuable insights about my health and lifestyle. Highly recommended!</p></div>
-                        <figure>
-                            <img  src={P1} className='w-10 rounded-full' />
-                        </figure>
-                        <div ><p>Mr.Mridul Sen</p></div>
-                    </div>  */}
 
-
-
-
-
-{/* <div className='flex gap-4'>
-                    <div className="card w-96 bg-base-100 shadow-xl">
-                        <div className="card-body">
-                            <p className='w-32 h-32 bg-base-white text-cyan-500'>{clientReview}</p></div>
-                        <figure>
-                            <img  src={picture} className='w-12 rounded-full' />
-                        </figure>
-                        <div ><p>{name}</p></div>
-                    </div> */}
 
 
 

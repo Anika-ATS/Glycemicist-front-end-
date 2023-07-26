@@ -36,7 +36,7 @@ const ClientRev = () => {
             
             ></SectionTitle>
             <div className="hero min-h-screen " style={{ backgroundImage: `url(${pic})` }} >
-                <div className="hero-overlay bg-opacity-70 "></div>
+                <div className="hero-overlay bg-opacity-80 "></div>
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12'>
                     {
                     ReviewData.map(msg=><Creview
