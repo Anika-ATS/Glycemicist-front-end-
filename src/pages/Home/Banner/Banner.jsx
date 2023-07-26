@@ -3,16 +3,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 import p1 from '../../../assets/Images/WhatsApp Image 2023-07-23 at 23.50.56.jpeg';
-import p2 from '../../../assets/Images/WhatsApp Image 2023-07-24 at 00.15.15(1).jpeg';
-// import p2 from '../../../assets/Images/D3.jpg';
-// import p3 from '../../../assets/Images/B-D4.png';
-// import p3 from '../../../assets/Images/B-D--4.png';
-//  style={{width:'1440px',height:'400px'}} 
+import p2 from '../../../assets/Images/B---2.jpeg';
+
+
 const Banner = () => {
     return (
         <Carousel>
                 <div>
-                    <img className="object-cover h-[500] w-screen" src={p1} />
+                    <img className="object-cover h-[500] w-screen opacity-50" src={p1} />
                
                 </div>
                 <div>

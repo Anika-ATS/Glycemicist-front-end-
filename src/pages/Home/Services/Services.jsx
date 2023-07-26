@@ -1,9 +1,11 @@
-import { FaPeriscope } from "react-icons/fa6";
+import { FaStethoscope } from "react-icons/fa6";
+import { FiEdit } from "react-icons/fi";
+import {  MdOutlineNotificationAdd,MdBloodtype} from "react-icons/md";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
-import p1 from '../../../assets/Images/WhatsApp Image 2023-07-24 at 00.15.15.jpeg'
-import p2 from '../../../assets/Images/WhatsApp Image 2023-07-24 at 00.15.15(1).jpeg'
+import p1 from '../../../assets/Images/B---2.jpeg'
+import p2 from '../../../assets/Images/B---3.jpeg'
 import p3 from '../../../assets/Images/360_F_416046820_K0ckfcrsY1ZD0ZjF9RTSlRgyIlaUr5P1.webp'
-import p4 from '../../../assets/Images/83200901.jpg'
+import p4 from '../../../assets/Images/New2sheadlessdoc.png'
 
 const Services = () => {
     return (
@@ -13,7 +15,7 @@ const Services = () => {
                 Heading={'Our Services'}
 
             ></SectionTitle>
-{/* flex x-space-4 gap-3 */}
+
             <div className="container mx-auto grid grid-cols-2 gap-5  py-5 mb-5 ">
 
                 {/* prediction */}
@@ -23,7 +25,7 @@ const Services = () => {
                     </figure>
                     <div className="card-body">
                         <h2 className="card-title">
-                            <FaPeriscope></FaPeriscope>
+                            <MdBloodtype></MdBloodtype>
                             <div className="badge bg-cyan-600 text-white">Risk Prediction</div>
 
                         </h2>
@@ -39,7 +41,7 @@ const Services = () => {
                     </figure>
                     <div className="card-body">
                         <h2 className="card-title">
-                            <FaPeriscope></FaPeriscope>
+                            <FiEdit></FiEdit>
                             <div className="badge bg-cyan-600 text-white">Tracking Health keys</div>
 
                         </h2>
@@ -54,7 +56,8 @@ const Services = () => {
                     </figure>
                     <div className="card-body">
                         <h2 className="card-title">
-                            <FaPeriscope></FaPeriscope>
+                            <MdOutlineNotificationAdd></MdOutlineNotificationAdd>
+                         
                             <div className="badge bg-cyan-600 text-white">Madicine Alert Notification</div>
 
                         </h2>
@@ -72,8 +75,8 @@ const Services = () => {
                     </figure>
                     <div className="card-body">
                         <h2 className="card-title">
-                            <FaPeriscope></FaPeriscope>
-                            <div className=" badge bg-cyan-600 text-white">Doctor Consultation</div>
+                            <FaStethoscope></FaStethoscope>
+                            <div className=" badge bg-cyan-600 text-white ">Doctor Consultation</div>
 
                         </h2>
                         <p className="group-hover:text-white w-full">

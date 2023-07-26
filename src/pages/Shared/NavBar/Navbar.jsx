@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import  logo  from '../../../assets/Images/glycemicist_logo-removebg-preview.png'
+import logo from '../../../assets/Images/glycemicist_logo-removebg-preview.png'
 
 const Navbar = () => {
     const NavItems = <>
@@ -30,7 +30,7 @@ const Navbar = () => {
                     </div>
                     {/* <a className="btn btn-white text-cyan-500  text-xl">GLYCEMICIST</a> */}
                     <label tabIndex={0} className=" avatar">
-                        <div className="mx-3 rounded-full" style={{height:'50px',width:'170px'}} >
+                        <div className="mx-3 rounded-full" style={{ height: '50px', width: '170px' }} >
                             <img src={logo} />
                         </div>
                     </label>
@@ -44,6 +44,7 @@ const Navbar = () => {
                     <a className="btn btn-white text-cyan-500 outline outline-cyan-500">Button</a>
                 </div>
             </div>
+
 
         </div>
     );
