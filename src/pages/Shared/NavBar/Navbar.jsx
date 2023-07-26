@@ -4,8 +4,8 @@ import  logo  from '../../../assets/Images/glycemicist_logo-removebg-preview.png
 const Navbar = () => {
     const NavItems = <>
         <li><Link to='/' className=' text-cyan-500 font-bold'>Home</Link></li>
-        <li><Link to='/' className=' text-cyan-500 font-bold'>Patients</Link></li>
-        <li><Link to='/'><span className=' text-cyan-500 font-bold' >Doctors</span> </Link></li>
+        <li><Link to='/dashboard' className=' text-cyan-500 font-bold'>Dashboard</Link></li>
+        <li><Link to='/allDoctors'><span className=' text-cyan-500 font-bold' >All Doctors</span> </Link></li>
         <li><Link to='/prediction'><span className=' text-cyan-500 font-bold' >Diabetis Prediction</span> </Link></li>
 
         <li><Link to='/login'><span className=' text-cyan-500 font-bold' >Login</span> </Link></li>

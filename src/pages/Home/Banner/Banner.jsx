@@ -2,7 +2,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
  // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
-import p1 from '../../../assets/Images/D1.jpg';
+import p1 from '../../../assets/Images/WhatsApp Image 2023-07-23 at 23.50.56.jpeg';
+import p2 from '../../../assets/Images/WhatsApp Image 2023-07-24 at 00.15.15(1).jpeg';
 // import p2 from '../../../assets/Images/D3.jpg';
 // import p3 from '../../../assets/Images/B-D4.png';
 // import p3 from '../../../assets/Images/B-D--4.png';
@@ -12,6 +13,10 @@ const Banner = () => {
         <Carousel>
                 <div>
                     <img className="object-cover h-[500] w-screen" src={p1} />
+               
+                </div>
+                <div>
+                    <img className="object-cover h-[500] w-screen" src={p2} />
                
                 </div>
                
