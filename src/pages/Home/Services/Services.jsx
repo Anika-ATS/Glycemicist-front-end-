@@ -5,7 +5,8 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import p1 from '../../../assets/Images/B---2.jpeg'
 import p2 from '../../../assets/Images/B---3.jpeg'
 import p3 from '../../../assets/Images/360_F_416046820_K0ckfcrsY1ZD0ZjF9RTSlRgyIlaUr5P1.webp'
-import p4 from '../../../assets/Images/New2sheadlessdoc.png'
+// import p4 from '../../../assets/Images/New2sheadlessdoc.png'
+import p4 from '../../../assets/Images/WhatsApp Image 2023-07-23 at 23.50.56.jpeg'
 
 const Services = () => {
     return (
@@ -16,7 +17,7 @@ const Services = () => {
 
             ></SectionTitle>
 
-            <div className="container mx-auto grid grid-cols-2 gap-5  py-5 mb-5 ">
+            <div className="container mx-auto grid grid-cols-2 gap-5  py-5 mb-5 " style={{backgroundColor: '#e8f4f4'}}>
 
                 {/* prediction */}
                 <div className=" card mx-auto gap-5 mb-6 w-96 bg-base-100 shadow-2xl hover:-translate-y-5  group  border border-blue hover:bg-gradient-to-r from-cyan-500 to-cyan-200 ">
@@ -69,7 +70,7 @@ const Services = () => {
                 </div>
 
                 {/* doctor consult */}
-                <div className="card  w-96 mb-5 mt-4 bg-base-100 shadow-xl hover:-translate-y-5 group  border border-blue hover:bg-gradient-to-r from-cyan-500 to-cyan-200">
+                <div className="card  w-96 mb-5 mt-4 bg-base-100 shadow-xl hover:-translate-y-5 group  border border-blue hover:hover:bg-gradient-to-r from-[#64d9b9] to-[#1d2939]">
                     <figure className="px-10 pt-10 mb-2 ">
                         <img src={p4} alt="" className="rounded-xl bg-opacity-70 " />
                     </figure>

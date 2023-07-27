@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import logo from '../../../assets/Images/glycemicist_logo-removebg-preview.png'
+import logo from '../../../assets/Images/logo2-removebg-preview.png'
 
 const Navbar = () => {
     const NavItems = <>
-        <li><Link to='/' className=' text-cyan-500 font-bold'>Home</Link></li>
-        <li><Link to='/dashboard' className=' text-cyan-500 font-bold'>Dashboard</Link></li>
-        <li><Link to='/allDoctors'><span className=' text-cyan-500 font-bold' >All Doctors</span> </Link></li>
-        <li><Link to='/prediction'><span className=' text-cyan-500 font-bold' >Diabetis Prediction</span> </Link></li>
+        <li><Link to='/' className=' text-[#1d2939] text-xl font-bold'>Home</Link></li>
+        <li><Link to='/dashboard' className='text-[#1d2939] text-xl font-bold'>Dashboard</Link></li>
+        <li><Link to='/allDoctors'><span className='text-[#1d2939] text-xl font-bold' >All Doctors</span> </Link></li>
+        <li><Link to='/prediction'><span className='text-[#1d2939] text-xl font-bold' >Diabetis Prediction</span> </Link></li>
 
-        <li><Link to='/login'><span className=' text-cyan-500 font-bold' >Login</span> </Link></li>
+        <li></li>
 
     </>
 
@@ -18,7 +18,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar mb-5  fixed z-10  bg-opacity-50 text-white max-w-screen-xl mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -30,7 +30,7 @@ const Navbar = () => {
                     </div>
                     {/* <a className="btn btn-white text-cyan-500  text-xl">GLYCEMICIST</a> */}
                     <label tabIndex={0} className=" avatar">
-                        <div className="mx-3 rounded-full" style={{ height: '50px', width: '170px' }} >
+                        <div className="mx-3 rounded-full" style={{ height: '70px', width: '170px' }} >
                             <img src={logo} />
                         </div>
                     </label>
@@ -41,7 +41,18 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn btn-white text-cyan-500 outline outline-cyan-500">Button</a>
+                  
+                    
+                       <Link to='/login'>
+                           <span className=' btn btn-white text-white bg-[#64d9b9]  h-[50px] w-[120px] rounded-full font-bold outline outline-[#1d2939] me-1 hover:bg-[#1d2939]' >Login</span> 
+                        </Link>
+                    
+                    
+                        <Link to='/SignUp'>
+                           <span className='badge btn btn-white text-white bg-[#64d9b9]  h-[50px] w-[120px] rounded-full font-bold outline outline-[#1d2939] me-5 hover:bg-[#1d2939]' >SignUp</span> 
+                        </Link>
+
+                    
                 </div>
             </div>
 

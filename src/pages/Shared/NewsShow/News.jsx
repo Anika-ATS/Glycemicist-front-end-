@@ -59,7 +59,7 @@ const News = () => {
                 Heading={'Diabetis News Section'}
 
             ></SectionTitle></div>
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-2 mb-12'>
+            <div className='bg-[#e8f4f4]  grid grid-cols-1 lg:grid-cols-3 gap-2 mb-12'>
 
 
 
@@ -70,11 +70,11 @@ const News = () => {
                 )}
 
             </div>
-            <div className='mx-96'>
+            <div className='mx-96 '>
                 {loading && <div className="mx- auto loading loading-spinner text-secondary">Loading...</div>}
                 {!loading && (
                     
-                    <button onClick={loadMoreNews} className=" mb-5  w-96 rounded-full outline outline-cyan-600">
+                    <button onClick={loadMoreNews} className="group bg-[#64d9b9] h-[50px] mb-5  w-96 text-white  rounded-full outline outline-[#1d2939]  hover:bg-[#1d2939] ">
                         Load More News</button> 
                 )}
             </div>

@@ -1,0 +1,14 @@
+/* styles.css */
+@keyframes fadeInText {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in-text {
+    animation: fadeInText 10s linear; /* Change the duration (10s) as per your desired speed */
+  }
+  

@@ -7,6 +7,8 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import DPrediction from "../pages/DPrediction/DPrediction";
+import AllDoctors from "../pages/AllDoc/AllDoctors";
+import Appointment from "../pages/Home/Appointment/Appointment";
 
   
  export const router = createBrowserRouter([
@@ -29,7 +31,18 @@ import DPrediction from "../pages/DPrediction/DPrediction";
         {
           path:'/prediction',
           element:<DPrediction></DPrediction>
+        },
+        {
+          path:'/allDoctors',
+          element:<AllDoctors></AllDoctors>
+        },
+        {
+          path:'/appointment',
+          element:<Appointment></Appointment>
         }
+        
+        
+
         
       ]
     },

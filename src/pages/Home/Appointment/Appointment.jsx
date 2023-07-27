@@ -1,11 +1,12 @@
 import pic from '../../../assets/Images/Newsheadlessdoc.jpg'
-import pic1 from '../../../assets/Images/ladyD-removebg-preview.png'
+// import pic1 from '../../../assets/Images/ladyD-removebg-preview.png'
 import { Controller, useForm } from 'react-hook-form';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 
 
 
 const Appointment = () => {
+    const staticId = "my-static-id"
     const {
         register,
         handleSubmit,
@@ -30,20 +31,13 @@ const Appointment = () => {
                 ></SectionTitle>
             </div>
         
-            <div className=" hero h-[700px]"  style={{ backgroundImage: `url(${pic})` }} >
+            <div  className=" hero h-[700px]"  style={{ backgroundImage: `url(${pic})` }} >
                 <div className="hero-overlay bg-opacity-60 "></div>
                 <div className=' grid grid-cols-2 '>
                 
-                
-                {/* <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="text-center lg:text-left  ">
-                    <figure className="px-5">
-                         <img  src={pic1} alt="" className="w-full" />
-                    </figure>
-                 
-                </div> */}
             
-                <div className="card  mx-24 w-10/12 shadow-2xl bg-base-300 hover:-translate-y-5 group  border border-cyan-500 hover:bg-gradient-to-r from-cyan-500 to-cyan-200 ">
+                <div id={staticId} className="card  mx-24 w-10/12 shadow-2xl bg-base-200 hover:-translate-y-5 group  border border-[#1d2939] hover:bg-gradient-to-r 
+                from-[#64d9b9] to-[#1d2939] ">
                     <h1 className='mt-2 shadow-2xl group-hover:text-white text-2xl mx-auto text-cyan-500'>Appointment Form</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
 
@@ -150,8 +144,8 @@ const Appointment = () => {
 
 
                         <div className="form-control mt-6">
-                            <input className="btn btn-white text-xl  text-cyan-500 outline outline-cyan-500 " type='submit' value='Book Appointment' />
-                            {/* <button className="btn btn-primary">Sign In</button> */}
+                            <input className="btn btn-white text-xl  text-[#64d9b9] outline outline-[#64d9b9] " type='submit' value='Book Appointment' />
+                         
                         </div>
 
                     </form>
