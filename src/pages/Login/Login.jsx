@@ -52,14 +52,14 @@ const Login = () => {
     return (
         
             <div>
-
+ 
 
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <div className="text-center lg:text-left">
                             <figure className="px-5 pt-5 w-1/2 h-1/2">
                                 <img src={L1} alt="" className="rounded-xl" /></figure>
-                            <h1 className="ps-5 text-2xl font-bold mt-3">New Here?<br /> <Link className='link link:hover text-cyan-500'
+                            <h1 className="ps-5 text-2xl text-[#1d2939] font-bold mt-3">New Here?<br /> <Link className='link link:hover text-[#64d9b9]'
                                 to='/SignUp'>Create An Account</Link></h1>
 
                         </div>
@@ -97,7 +97,7 @@ const Login = () => {
 
                                     <div className="form-control mt-6">
 
-                                        <input className="btn btn-white text-cyan-500 outline outline-cyan-500" type='submit' value='Login' />
+                                        <input className="mx-auto outline outline-[#1d2939] badge bg-[#64d9b9] text-white h-[50px] w-[100px] hover:bg-[#1d2939] rounded-full" type='submit' value='Login' />
                                     </div>
                                     {/* <SocialLogin></SocialLogin> */}
                                 </div>

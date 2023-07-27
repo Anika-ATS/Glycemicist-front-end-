@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const NewsDisplay = ({article}) => {
     const{title,url,description}=article
     return (
-        <div className='container mx-auto flex x-space-4 gap-3 py-5 mb-5 bg-[#e8f4f4] '  >
+        <div className='container mx-auto flex x-space-4 gap-3 py-5 mb-5 '  >
                {/*  "card w-96  x-space-4 bg-base-100 shadow-2xl " */}
                 {/* Display news */}
                 <div className="card mx-2  w-96 bg-base-100 shadow-2xl border border-[#1d2939] hover:-translate-y-5 ">

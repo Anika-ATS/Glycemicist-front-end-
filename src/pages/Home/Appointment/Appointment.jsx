@@ -38,7 +38,7 @@ const Appointment = () => {
             
                 <div id={staticId} className="card  mx-24 w-10/12 shadow-2xl bg-base-200 hover:-translate-y-5 group  border border-[#1d2939] hover:bg-gradient-to-r 
                 from-[#64d9b9] to-[#1d2939] ">
-                    <h1 className='mt-2 shadow-2xl group-hover:text-white text-2xl mx-auto text-cyan-500'>Appointment Form</h1>
+                    <h1 className='mt-3 px-2 shadow-2xl group-hover:text-white text-2xl mx-auto text-[#64d9b9] '>Appointment Form</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
 
                         <div className="form-control">

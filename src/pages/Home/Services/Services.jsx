@@ -19,8 +19,8 @@ const Services = () => {
 
             <div className="container mx-auto grid grid-cols-2 gap-5  py-5 mb-5 " style={{backgroundColor: '#e8f4f4'}}>
 
-                {/* prediction */}
-                <div className=" card mx-auto gap-5 mb-6 w-96 bg-base-100 shadow-2xl hover:-translate-y-5  group  border border-blue hover:bg-gradient-to-r from-cyan-500 to-cyan-200 ">
+                {/* prediction--hover:bg-gradient-to-r from-cyan-500 to-cyan-200  */}
+                <div className=" card mx-auto gap-5 mb-6 w-96 bg-base-100 shadow-2xl hover:-translate-y-5  group  border border-blue hover:bg-gradient-to-r from-[#64d9b9] to-[#1d2939] ">
                     <figure className="px-10 pt-10 mb-2 ">
                         <img src={p1} alt="Shoes" className="rounded-xl" />
                     </figure>
@@ -36,7 +36,7 @@ const Services = () => {
                 </div>
 
                 {/* Tracking */}
-                <div className="card  mb-6  w-96 bg-base-100 shadow-2xl hover:-translate-y-5 group  border border-blue hover:bg-gradient-to-r from-cyan-500 to-cyan-200">
+                <div className="card  mb-6  w-96 bg-base-100 shadow-2xl hover:-translate-y-5 group  border border-blue bg-gradient-to-r hover:from-[#64d9b9] to-[#1d2939]">
                     <figure className="px-10 pt-10 mb-2 ">
                         <img src={p2} alt="Shoes" className="rounded-xl" />
                     </figure>
@@ -51,7 +51,7 @@ const Services = () => {
                     </div>
                 </div>
                 {/* Medicine alert opacity-70 */}
-                <div className="card mx-auto mt-4 gap-5 mb-5 w-96 bg-base-100 shadow-2xl hover:-translate-y-5 group  border border-blue hover:bg-gradient-to-r from-cyan-500 to-cyan-200">
+                <div className="card mx-auto mt-4 gap-5 mb-5 w-96 bg-base-100 shadow-2xl hover:-translate-y-5 group  border border-blue hover:bg-gradient-to-r from-[#64d9b9] to-[#1d2939]">
                     <figure className="px-10 pt-10 mb-2 ">
                         <img src={p3} alt="" className="rounded-xl contrast-50 " />
                     </figure>
@@ -70,7 +70,7 @@ const Services = () => {
                 </div>
 
                 {/* doctor consult */}
-                <div className="card  w-96 mb-5 mt-4 bg-base-100 shadow-xl hover:-translate-y-5 group  border border-blue hover:hover:bg-gradient-to-r from-[#64d9b9] to-[#1d2939]">
+                <div className="card  w-96 mb-5 mt-4 bg-base-100 shadow-xl hover:-translate-y-5 group  border border-blue bg-gradient-to-r hover:from-[#64d9b9] to-[#1d2939]">
                     <figure className="px-10 pt-10 mb-2 ">
                         <img src={p4} alt="" className="rounded-xl bg-opacity-70 " />
                     </figure>
