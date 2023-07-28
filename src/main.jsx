@@ -1,28 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-import './index.css'
+import "./index.css";
 
-import {
+import {RouterProvider} from "react-router-dom";
+import {router} from "./Routes/Routes";
+import AuthProvider from "./Providers/AuthProvider";
 
-  RouterProvider,
-} from "react-router-dom";
-import { router } from './Routes/Routes';
-import AuthProvider from './Providers/AuthProvider';
-
-
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <App /> */}
     <AuthProvider>
-      <div className='max-w-screen-xl mx-auto'>
+      <div className="">
         <RouterProvider router={router} />
       </div>
-
-
     </AuthProvider>
-
-
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
