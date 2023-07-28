@@ -3,9 +3,11 @@ import Dp1 from "../../assets/Images/Dprediction1.webp";
 import convertFormData from "./convertFormData";
 import {useState} from "react";
 import Swal from "sweetalert2";
+import {Player} from "@lottiefiles/react-lottie-player";
+import Pres from "../../../src/assets/lotti/animation_lkmb8gia.json";
 import Dia from "../../assets/animation_lkgfscy7.json";
 import nonDia from "../../assets/animation_lkgfl9hf.json";
-import {Player} from "@lottiefiles/react-lottie-player";
+
 
 // https://glycemist-server.onrender.com/
 const DPrediction = () => {
@@ -63,25 +65,47 @@ const DPrediction = () => {
   };
 
   return (
-    <div>
+    <div >
       {/* Banner part*/}
       <div
-        className="hero min-h-screen"
+        className="relative hero min-h-screen "
         style={{backgroundImage: `url(${Dp1})`}}
       >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <p className="mb-5 text-2xl">
-              Diabetic Prediction Test is not just for those who exhibit
-              symptoms of diabetes but for anyone concerned about their overall
-              health and well-being. Prevention is the key to a healthier
-              future.
-            </p>
-            {/* <button className="btn btn-primary">Get Started</button> */}
-          </div>
+        <div className=" hero-overlay bg-opacity-50"></div>
+
+        <div className=" hero-content text-cente text-neutral-content">
+          {/* cant fixed position of lotti*/}
+            <div className="  absolute  top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-40  text-white ">
+                <div className="grid grid-cols-2 gap-5 animate-pulse ">
+                  {/* card-1 */}
+                  <div className="mx-56 mt-64 toast toast-start toast-top h-[300px] mb-10">
+                    <div className="group card w-[300px] h-[300px]  shadow-xl  ">
+                      <div className="card-body  ">
+                        <Player
+                          src={Pres}
+                          className="player  w-[300px] h-[200px]"
+                          loop
+                          autoplay
+                        />
+                      </div>
+                    </div>
+                  </div>           
+              </div>
+              </div>
+            <div className="max-w-md">
+          
+              <p className="mb-5 text-2xl text-white">
+                Diabetic Prediction Test is not just for those who exhibit
+                symptoms of diabetes but for anyone concerned about their overall
+                health and well-being. Prevention is the key to a healthier
+                future.
+              </p>
+              
+        
+            </div>
         </div>
       </div>
+      
       {/* body */}
       {isLoading && (
         <div className="modal modal-open">
@@ -95,7 +119,7 @@ const DPrediction = () => {
           </div>
         </div>
       )}
-      <section className="py-9 ">
+      <section className="py-9 bg-[#e8f4f4]  ">
         {res !== undefined && (
           <div className="result-container mx-auto max-w-screen-lg ">
             {/* <h2 className="text-center text-lg">Diabetic Prediction Result:</h2> */}
@@ -125,8 +149,8 @@ const DPrediction = () => {
             )}
           </div>
         )}
-        <div className="card  mx-auto flex-shrink-0  max-w-screen-lg  shadow-lg bg-base-300">
-          <h3 className="mx-auto font-sans text-4xl py-4 text-cyan-500">
+        <div className="card  mx-auto flex-shrink-0  max-w-screen-lg  shadow-lg bg-base-300   ">
+          <h3 className="badge mt-10 mx-auto font-sans text-4xl py-6 text-white bg-gradient-to-r  from-[#64d9b9] to-[#1d2939] outline outline-[#1d2939]">
             Prediction Form
           </h3>
           <form
@@ -135,7 +159,7 @@ const DPrediction = () => {
           >
             {/* f1=HighBp */}
             <div className="form-control ">
-              <label className=" mx-auto w-11/12 text-xl text-cyan-500 mb-2 ">
+              <label className=" mx-auto w-11/12 text-xl font-bold text-[#1d2939] mb-2 ">
                 Do you have high Blood Pressure ?
               </label>
               <Controller
@@ -162,7 +186,7 @@ const DPrediction = () => {
             </div>
             {/* f2=HighChol */}
             <div className="form-control ">
-              <label className=" mx-auto w-11/12 text-xl text-cyan-500 mb-2 ">
+              <label className="font-bold text-[#1d2939]  mx-auto w-11/12 text-xl  mb-2 ">
                 Do you have high cholesterol ?
               </label>
               <Controller
@@ -192,7 +216,7 @@ const DPrediction = () => {
             </div>
             {/* {f15=BMI} */}
             <div className="form-control ">
-              <label className="py-3 mx-auto w-11/12 text-xl text-cyan-500 ">
+              <label className="font-bold text-[#1d2939]  py-3 mx-auto w-11/12 text-xl ">
                 Your BMI?
               </label>
               <input
@@ -210,7 +234,7 @@ const DPrediction = () => {
 
             {/* f10=Heart dieases or heart attack */}
             <div className="form-control ">
-              <label className="py-3 mx-auto w-11/12 text-xl text-cyan-500 my-1">
+              <label className="font-bold text-[#1d2939]  py-3 mx-auto w-11/12 text-xl  my-1">
                 Do you have any history of heart disease or heart-related health
                 issues such as coronary heart disease (CHD) or myocardial
                 infarction(MI)?
@@ -241,7 +265,7 @@ const DPrediction = () => {
             </div>
             {/* f6=PhyActivity */}
             <div className="form-control ">
-              <label className=" mx-auto w-11/12 text-xl text-cyan-500 mb-3">
+              <label className="font-bold text-[#1d2939]  mx-auto w-11/12 text-xl  mb-3">
                 Did you engaged in any physical activity to maintain your
                 well-being or improve your health in past 30 days?{" "}
               </label>
@@ -272,7 +296,7 @@ const DPrediction = () => {
 
             {/* f4=fruit */}
             <div className="form-control ">
-              <label className=" mx-auto w-11/12 text-xl text-cyan-500 mb-2">
+              <label className="font-bold text-[#1d2939]  mx-auto w-11/12 text-xl  mb-2">
                 Consume Fruit 1 or more times per day?
               </label>
               <Controller
@@ -301,7 +325,7 @@ const DPrediction = () => {
             </div>
             {/* f5=Veggies */}
             <div className="form-control ">
-              <label className=" mx-auto w-11/12 text-xl text-cyan-500 mb-2 ">
+              <label className="font-bold text-[#1d2939]  mx-auto w-11/12 text-xl  mb-2 ">
                 Consume Vegetables 1 or more times per day?{" "}
               </label>
               <Controller
@@ -331,7 +355,7 @@ const DPrediction = () => {
 
             {/* f7=GenHealth */}
             <div className="form-control ">
-              <label className="py-3 mx-auto w-11/12 text-xl text-cyan-500 mb-2 ">
+              <label className="font-bold text-[#1d2939]   py-3 mx-auto w-11/12 text-xl mb-2 ">
                 Would you say that in general your health is?{" "}
               </label>
               <Controller
@@ -364,7 +388,7 @@ const DPrediction = () => {
 
             {/* f8=Mental Health */}
             <div className="form-control ">
-              <label className="py-3 mx-auto w-11/12 text-xl text-cyan-500 my-2">
+              <label className="font-bold text-[#1d2939]  py-3 mx-auto w-11/12 text-xl my-2">
                 In the last 30 days, how many days have you dealt with mental
                 health issues, such as stress, depression, or emotional
                 challenges?
@@ -382,7 +406,7 @@ const DPrediction = () => {
             </div>
             {/* f9=Physical Health */}
             <div className="form-control ">
-              <label className="py-3 mx-auto w-11/12 text-xl text-cyan-500 my-2 ">
+              <label className="font-bold text-[#1d2939]  py-3 mx-auto w-11/12 text-xl  my-2 ">
                 In the past 30 days, how many days have you experienced physical
                 illness or injury that affected your physical health?
               </label>
@@ -400,7 +424,7 @@ const DPrediction = () => {
 
             {/* f11=Gender */}
             <div className="form-control ">
-              <label className="py-3 mx-auto w-11/12 text-xl text-cyan-500 ">
+              <label className="font-bold text-[#1d2939]  py-3 mx-auto w-11/12 text-xl ">
                 Gender{" "}
               </label>
               <Controller
@@ -431,7 +455,7 @@ const DPrediction = () => {
 
             {/* {f12=Age} */}
             <div className="form-control ">
-              <label className="py-3 mx-auto w-11/12 text-xl text-cyan-500 ">
+              <label className="font-bold text-[#1d2939] py-3 mx-auto w-11/12 text-xl ">
                 What is your Age?{" "}
               </label>
               <Controller
@@ -472,7 +496,7 @@ const DPrediction = () => {
 
             {/* {f14=Education} */}
             <div className="form-control ">
-              <label className="py-3 mx-auto w-11/12 text-xl text-cyan-500 ">
+              <label className="font-bold text-[#1d2939]  py-3 mx-auto w-11/12 text-xl ">
                 {" "}
                 Your education level?
               </label>
@@ -517,7 +541,7 @@ const DPrediction = () => {
             </div>
             {/* {f13=Income} */}
             <div className="form-control ">
-              <label className="py-3 mx-auto w-11/12 text-xl text-cyan-500 ">
+              <label className="font-bold text-[#1d2939]  py-3 mx-auto w-11/12 text-xl  ">
                 Your Income scale?{" "}
               </label>
               <Controller
@@ -554,7 +578,7 @@ const DPrediction = () => {
             {/* submit button */}
             <div className="form-control mt-6">
               <input
-                className="mx-auto btn btn-white w-5/12 text-2xl text-cyan-600 outline outline-cyan-500"
+                className="font-bold text-white  mx-auto btn btn-white w-5/12 text-2xl  outline outline-[#1d2939] bg-gradient-to-r  from-[#64d9b9] to-[#1d2939]"
                 type="submit"
                 value="Submit"
               />
@@ -563,6 +587,7 @@ const DPrediction = () => {
         </div>
       </section>
     </div>
+
   );
 };
 

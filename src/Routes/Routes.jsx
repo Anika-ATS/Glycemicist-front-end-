@@ -8,6 +8,9 @@ import Dashboard from "../Layout/Dashboard";
 import AllUsers from "../AllUsersDashboards/Admin/AllUsers";
 import Appointment from "../pages/Home/Appointment/Appointment";
 import Doctors from "../pages/AllDoc/Doctors";
+// import Dashboard from "../Layout/Dashboard";
+
+
 
 export const router = createBrowserRouter([
   {
@@ -52,3 +55,4 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
+

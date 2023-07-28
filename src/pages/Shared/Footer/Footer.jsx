@@ -1,37 +1,55 @@
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/Images/glycemicist_logo-removebg-preview.png'
+import logo from '../../../assets/Images/logo2-removebg-preview.png'
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Footer = () => {
     return (
         <div>
-            <footer className="h-full footer footer-center p-1 bg-base-300 text-base-content">
-                <div>
-                    <label tabIndex={0} className=" avatar">
-                        <div className="mx-3 rounded-full" style={{ height: '80px', width: '250px' }} >
+            <footer className="h-[300px] footer footer-center p-1 bg-[#1d2939] text-[#64d9b9]">
+                <div className='grid grid-cols-2'>
+                <div className='mt-1'>
+                    <label tabIndex={0} className=" avatar ">
+                        <div className="mx-2 rounded-full h-[150px] w-[250px]">
                             <img src={logo} />
                         </div>
                     </label>
 
-                    <p className="font-bold mt-2">
+                    <p className=" mt-3">
                         An intelligent web app that accurately predicts diabetic risk for patients, while delivering a comprehensive healthcare overview, empowering individuals to take charge of their health with personalized insights and proactive measures.
                     </p>
-                    <p className="font-bold mt-1 ">Copyright © 2023 - All right reserved</p>
+                    <p className="font-bold mt-5 mb-5 ">Copyright © 2023 - All right reserved</p>
                 </div>
-                
-                    {/* <div className="grid grid-flow-col gap-4">
-                        <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a>
-                        <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg></a>
-                        <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
-                    </div>text-xl flex justify-around font-bold */}
-                    <div className='text-xl grid grid-flow-col gap-6'>
-                    <Link to='/' className=' text-cyan-500 font-bold'>Home</Link>
-                    <Link to='/' className=' text-cyan-500 font-bold'>Patients</Link>
-                    <Link to='/'><span className=' text-cyan-500 font-bold' >Doctors</span> </Link>
-                    <Link to='/prediction'><span className=' text-cyan-500 font-bold' >Diabetis Prediction</span> </Link>
 
-                    <Link to='/login'><span className=' text-cyan-500 font-bold' >Login</span> </Link>
+                <div className='grid gird-rows-2'>
+                    {/* <h1 className='font-bold text-[#64d9b9] '>Services:</h1> */}
+                    <div className='me-2 mt-5  text-xl grid grid-flow-col gap-6 text-[#64d9b9]    font-bold'>
+                        <Link to='/'>Home</Link>
+                        <Link to='/dashboard' >Dashboard</Link>
+                        <Link to='/allDoctors'>All Doctors</Link>
+                        <Link to='/prediction'>Diabetis Prediction</Link>
+
+                        <Link to='/login'>Login</Link>
                     </div>
-                
+                <div className='mt-5 badge outline outline-[#64d9b9] text-white text-xl grid grid-flow-col gap-6  w-full h-[200px] bg-[#1d2939]'>
+                <div className='flex flex-col'>
+                    <p className='mx-5 mt-3 font-bold  text-[#64d9b9]'>Want to share    your Opinion for Glycemicist?
+                    </p>
+                    {/* <span className=' font-bold bg-[#1d2939]'><AiOutlineArrowRight></AiOutlineArrowRight></span> */}
+                    
+                    <input type="text" placeholder="Type here" className="flex mx-28 me-16 mt-10 input input-bordered text-black w-1/2  " />
+                    <div className="mt-2 form-control">
+                        
+                        <label className="flex input-group mx-20 me-16  ">
+                            <span className='text-[#1d2939] bg-[#64d9b9]'>Email</span>
+                            <input type="text" placeholder="Your Email" className="input input-bordered " />
+                        </label>
+                    </div>
+                    </div>
+
+                </div>
+                </div>
+                </div>
+
             </footer>
 
         </div>
