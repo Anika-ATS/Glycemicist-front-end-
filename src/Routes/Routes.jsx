@@ -1,3 +1,9 @@
+import {createBrowserRouter} from "react-router-dom";
+import Main from "../Layout/Main";
+import Home from "../pages/Home/Home/Home";
+import Login from "../pages/Login/Login";
+import SignUp from "../pages/SignUp/SignUp";
+import DPrediction from "../pages/DPrediction/DPrediction";
 import Dashboard from "../Layout/Dashboard";
 import AllUsers from "../AllUsersDashboards/Admin/AllUsers";
 import Appointment from "../pages/Home/Appointment/Appointment";
@@ -25,13 +31,13 @@ export const router = createBrowserRouter([
         element: <DPrediction></DPrediction>,
       },
       {
-        path:'/allDoctors',
-        element:<Doctors></Doctors>
+        path: "/allDoctors",
+        element: <Doctors></Doctors>,
       },
       {
-        path:'/appointment',
-        element:<Appointment></Appointment>
-      }
+        path: "/appointment",
+        element: <Appointment></Appointment>,
+      },
     ],
   },
   {
