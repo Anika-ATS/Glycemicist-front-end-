@@ -6,7 +6,7 @@ const Navbar = () => {
         <li><Link to='/' className=' text-[#1d2939] text-xl font-bold'>Home</Link></li>
         <li><Link to='/dashboard' className='text-[#1d2939] text-xl font-bold'>Dashboard</Link></li>
         <li><Link to='/allDoctors'><span className='text-[#1d2939] text-xl font-bold' >All Doctors</span> </Link></li>
-        <li><Link to='/prediction'><span className='text-[#1d2939] text-xl font-bold' >Diabetis Prediction</span> </Link></li>
+        <li><Link to='/prediction'><span className='text-[#1d2939] text-xl font-bold ' >Diabetis Prediction</span> </Link></li>
 
         <li></li>
 
@@ -18,7 +18,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar mb-5  fixed z-10  bg-opacity-50 text-white max-w-screen-xl mx-auto">
+            <div className="navbar mb-5  fixed z-10  bg-opacity-50 text-white max-w-screen-xl mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -28,7 +28,7 @@ const Navbar = () => {
                             {NavItems}
                         </ul>
                     </div>
-                    {/* <a className="btn btn-white text-cyan-500  text-xl">GLYCEMICIST</a> */}
+                    
                     <label tabIndex={0} className=" avatar">
                         <div className="mx-3 rounded-full" style={{ height: '70px', width: '170px' }} >
                             <img src={logo} />

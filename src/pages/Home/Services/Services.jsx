@@ -17,7 +17,7 @@ const Services = () => {
 
             ></SectionTitle>
 
-            <div className="container mx-auto grid grid-cols-2 gap-5  py-5 mb-5 " style={{backgroundColor: '#e8f4f4'}}>
+            <div className="container mx-auto grid grid-cols-2 gap-5  py-5 mb-5 bg-[#e8f4f4] " >
 
                 {/* prediction--hover:bg-gradient-to-r from-cyan-500 to-cyan-200  */}
                 <div className=" card mx-auto gap-5 mb-6 w-96 bg-base-100 shadow-2xl hover:-translate-y-5  group  border border-blue hover:bg-gradient-to-r from-[#64d9b9] to-[#1d2939] ">

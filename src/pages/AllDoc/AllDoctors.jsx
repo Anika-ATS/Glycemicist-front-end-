@@ -7,14 +7,14 @@ const AllDoctors = ({doc}) => {
             <figure className="  px-3 pt-5">
             <img className="object-cover w-[160px] h-[150px] mt-0 rounded-full shadow-2xl"  src={image}  alt="" />
             </figure>
-            <div className=" mt-9">
-                <h3>Name:<span className="4xl text-green-600 ">{name}</span></h3>
-                <p>Email:{email}</p>
-                <p>Class:{designation}</p>
-                <p>Catagory:{specialization}</p>
-                <p>Height:{height}</p>
+            <div className="font-bold mt-9 text-xl text-[#64d9b9]">
+                <h3 >Name:<span className="mx-2 mb-2 text-[#1d2939]">{name}</span></h3>
+                <p>Email:<span className="mx-2 mb-2 text-[#1d2939]">{email}</span></p>
+                <p>Class:<span className="mx-2 mb-2 text-[#1d2939]">{designation}</span></p>
+                <p>Catagory:<span className="mx-1 mb-2 text-[#1d2939]">{specialization}</span></p>
+                <p>Height:<span className="mx-2 mb-2 text-[#1d2939]">{height}</span></p>
             </div>
-                 
+                
             
             
         </div>

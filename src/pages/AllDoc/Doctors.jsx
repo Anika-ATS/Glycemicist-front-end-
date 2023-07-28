@@ -6,7 +6,7 @@ const Doctors = () => {
     const [AllDoc]=useDoctors();
     return (
         <div>
-            <div className=" grid grid-cols-3 gap-4 md:grid-cols-3 gap-4 py-4 mb-5 ">
+            <div className="bg-[#e8f4f4]  grid grid-cols-3 gap-4 md:grid-cols-3 gap-4 py-4  ">
 
                 {
                     AllDoc.map(doc => <AllDoctors

@@ -10,6 +10,7 @@ import DPrediction from "../pages/DPrediction/DPrediction";
 // import AllDoctors from "../pages/AllDoc/AllDoctors";
 import Appointment from "../pages/Home/Appointment/Appointment";
 import Doctors from "../pages/AllDoc/Doctors";
+import Dashboard from "../Layout/Dashboard";
 
   
  export const router = createBrowserRouter([
@@ -47,4 +48,11 @@ import Doctors from "../pages/AllDoc/Doctors";
         
       ]
     },
+    //dashboard
+    {
+      path: "/dashboard",
+      element:<Dashboard></Dashboard>,
+      children:[{}]
+        
+    }
   ]);
