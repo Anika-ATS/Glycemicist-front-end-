@@ -8,7 +8,7 @@ const Main = () => {
   // const NoNavbarAndFooter=location.pathname.includes('login')||location.pathname.includes('SignUp');
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar color="bg-slate-100"></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>
     </div>

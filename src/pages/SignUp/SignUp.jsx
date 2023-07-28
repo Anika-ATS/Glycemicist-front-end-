@@ -4,6 +4,7 @@ import {useForm} from "react-hook-form";
 import {useContext} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const SignUp = () => {
   const {
@@ -54,9 +55,36 @@ const SignUp = () => {
         //       });
         //   })
         //   .catch(error => console.log(error));
-        updateUserProfile(createdUser, data.name, data.photo);
-        Swal.fire("Signed Up successfully!");
-        navigate("/");
+
+        updateUserProfile(createdUser, data.name, data.photo).then(() => {
+          const newUser = {
+            name: data.name,
+            email: data.email,
+            image: data.photo,
+            role: "user",
+          };
+          axios
+
+            .post(" http://localhost:5000/users", newUser)
+
+            .then(response => {
+              if (response.data.insertedId) {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Registered successfully. Please Login!",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            })
+            .catch(error => {
+              setError(error.message);
+            });
+        });
+        // Swal.fire("Signed Up successfully!");
+        // navigate("/");
       })
       .catch(error => {
         console.log(error);

@@ -30,7 +30,6 @@ const DPrediction = () => {
       setIsLoading(true);
       // Send the data to the backend as JSON
       const response = await fetch(
-        // "http://localhost:5000/make-predictiongbhi",
         "https://glycemist-server.onrender.com/make-predictiongbhi",
         {
           method: "POST",
