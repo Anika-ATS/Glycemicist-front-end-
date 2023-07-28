@@ -1,0 +1,26 @@
+[
+    {
+      "name": "Dr. Jennifer Doe",
+      "image": "https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg",
+      "email": "dr.johndoe@example.com",
+      "designation": "General Physician",
+      "specialization": "Internal Medicine",
+      "height": "5'10\""
+    },
+    {
+      "name": "Dr. Jane Smith",
+      "image": "https://img.freepik.com/free-photo/attractive-young-male-nutriologist-lab-coat-smiling-against-white-background_662251-2960.jpg",
+      "email": "dr.janesmith@example.com",
+      "designation": "Cardiologist",
+      "specialization": "Cardiology",
+      "height": "5'8\""
+    },{
+      "name": "Dr. Annie Doe",
+      "image": "https://www.onlineshs.com/wp-content/uploads/2022/12/shutterstock_1901822248-1-1.png",
+      "email": "dr.anniedoe@example.com",
+      "designation": "General Physician",
+      "specialization": "Internal Medicine",
+      "height": "5'11\""
+    }
+  ]
+  
