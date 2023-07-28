@@ -2,9 +2,11 @@ import {Link} from "react-router-dom";
 import logo from "../../../assets/Images/logo2-removebg-preview.png";
 import {AuthContext} from "../../../Providers/AuthProvider";
 import {useContext} from "react";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const Navbar = props => {
   const {user, logOut} = useContext(AuthContext);
+  const {isAdmin} = useAdmin();
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -14,23 +16,36 @@ const Navbar = props => {
   const NavItems = (
     <>
       <li>
-        <Link to="/" className=" text-[#1d2939] text-xl font-bold">
+        <Link to="/" className={`${props.liColor} text-lg font-semibold`}>
           Home
         </Link>
       </li>
       <li>
-        <Link to="/dashboard" className="text-[#1d2939] text-xl font-bold">
+        <Link
+          to={
+            isAdmin
+              ? "/dashboard/allusers"
+              : // : isInstructor?
+                //  "/dashboard/addclass"
+                "/dashboard/selectedclasses"
+          }
+          className={`${props.liColor} text-lg font-semibold`}
+        >
           Dashboard
         </Link>
       </li>
       <li>
         <Link to="/allDoctors">
-          <span className="text-[#1d2939] text-xl font-bold">All Doctors</span>{" "}
+          <span className={`${props.liColor} text-lg font-semibold`}>
+            Doctors
+          </span>{" "}
         </Link>
       </li>
       <li>
         <Link to="/prediction">
-          <span className=" text-cyan-500 font-bold">Diabetis Prediction</span>{" "}
+          <span className={`${props.liColor} text-lg font-semibold`}>
+            Diabetis Prediction
+          </span>{" "}
         </Link>
       </li>
     </>
@@ -57,6 +72,14 @@ const Navbar = props => {
                 />
               </svg>
             </label>
+            <label tabIndex={0} className=" avatar">
+              <div
+                className="mx-3 rounded-full"
+                style={{height: "70px", width: "170px"}}
+              >
+                <img src={logo} />
+              </div>
+            </label>
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
@@ -68,14 +91,7 @@ const Navbar = props => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{NavItems}</ul>
         </div>
-        <label tabIndex={0} className=" avatar">
-          <div
-            className="mx-3 rounded-full"
-            style={{height: "70px", width: "170px"}}
-          >
-            <img src={logo} />
-          </div>
-        </label>
+
         <div className="navbar-end">
           {user ? (
             <button
