@@ -30,7 +30,7 @@ const Footer = () => {
 
                         <Link to='/login'>Login</Link>
                     </div>
-                <div className='mt-5 badge outline outline-[#64d9b9] text-white text-xl grid grid-flow-col gap-6  w-full h-[200px] bg-[#1d2939]'>
+                <div className='mt-5 badge border border-[#64d9b9] text-white text-xl grid grid-flow-col gap-6  w-full h-[200px] bg-[#1d2939]'>
                 <div className='flex flex-col'>
                     <p className='mx-5 mt-3 font-bold  text-[#64d9b9]'>Want to share    your Opinion for Glycemicist?
                     </p>
