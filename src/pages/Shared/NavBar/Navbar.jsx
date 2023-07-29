@@ -42,10 +42,19 @@ const Navbar = props => {
           </span>{" "}
         </Link>
       </li>
+      
       <li>
         <Link to="/prediction">
           <span className={`${props.liColor} text-lg font-semibold`}>
             Diabetis Prediction
+          </span>{" "}
+        </Link>
+      </li>
+      {/* diagonostic  */}
+      <li>
+        <Link to="/diagnostic">
+          <span className={`${props.liColor} text-lg font-semibold`}>
+            Diagnostic Corner
           </span>{" "}
         </Link>
       </li>

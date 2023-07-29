@@ -1,0 +1,31 @@
+[
+    {  
+       "_id":"1",
+       "token":"A",
+      "test_name": "Fasting Blood Sugar",
+      "price": "600 BDT",
+      "system":"Pay First"
+    },
+    {  
+      "_id":"2",
+      "token":"B",
+      "test_name": "Oral Glucose Tolerance Test (OGTT)",
+      "price": "800 BDT",
+      "system":"Pay First"
+    },
+    {
+        "_id":"3",
+        "token":"C",
+       "test_name": "Hemoglobin A1c (HbA1c)",
+      "price": "500 BDT",
+      "system":"Pay First"
+    },
+    {
+        "_id":"4",
+        "token":"D",
+      "test_name": "Random Blood Sugar",
+      "price": "550 BDT",
+      "system":"Pay First"
+    }
+  ]
+

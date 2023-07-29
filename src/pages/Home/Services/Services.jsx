@@ -46,7 +46,7 @@ const Services = () => {
                             <div className="badge bg-cyan-600 text-white">Tracking Health keys</div>
 
                         </h2>
-                        <p className="group-hover:text-white w-full">We understand the importance of staying on top of your health, and we're thrilled to see you diligently tracking your key health metrics-BMI,Insulin,BP,Glucose.By regularly tracking these vital health metrics, you are taking a proactive step towards better health management.</p>
+                        <p className=" w-full">We understand the importance of staying on top of your health, and we're thrilled to see you diligently tracking your key health metrics-BMI,Insulin,BP,Glucose.By regularly tracking these vital health metrics, you are taking a proactive step towards better health management.</p>
 
                     </div>
                 </div>
@@ -71,16 +71,16 @@ const Services = () => {
 
                 {/* doctor consult */}
                 <div className="card  w-96 mb-5 mt-4 bg-base-100 shadow-xl hover:-translate-y-5 group  border border-blue bg-gradient-to-r hover:from-[#64d9b9] to-[#1d2939]">
-                    <figure className="px-10 pt-10 mb-2 ">
-                        <img src={p4} alt="" className="rounded-xl bg-opacity-70 " />
+                    <figure className="px-10 pt-10 mb-5 ">
+                        <img src={p4} alt="" className="rounded-xl bg-opacity-50 h-[150px] " />
                     </figure>
                     <div className="card-body">
-                        <h2 className="card-title">
+                        <h2 className="card-title ">
                             <FaStethoscope></FaStethoscope>
                             <div className=" badge bg-cyan-600 text-white ">Doctor Consultation</div>
 
                         </h2>
-                        <p className="group-hover:text-white w-full">
+                        <p className=" w-full">
                             We care about your well-being. Should you have any questions or concerns about your health, don't hesitate to consult with your healthcare provider. Keep up the excellent work, and we're here to support you on your health journey!
                         </p>
 
