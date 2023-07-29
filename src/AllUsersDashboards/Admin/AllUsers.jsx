@@ -14,8 +14,8 @@ const AllUsers = () => {
       try {
         setIsLoading(true);
         const response = await fetch(
-          `http://localhost:5000/users?email=${user?.email}`
-          // "https://glycemist-server.onrender.com/users"
+          // `http://localhost:5000/users?email=${user?.email}`
+          `https://glycemist-server.onrender.com/users?email=${user?.email}`
         );
 
         if (response.ok) {
@@ -58,13 +58,13 @@ const AllUsers = () => {
               <th className="text-center">Name</th>
               <th className="text-center">Email</th>
               <th className="text-center">Role</th>
-              <th className="text-center">Assign Role</th>
+              <th className="text-center">Status</th>
             </tr>
           </thead>
           <tbody className=" bg-white">
-            {allusers.map((user, index) => (
+            {allusers.map((users, index) => (
               <tr
-                key={user._id}
+                key={users._id}
                 className="hover:bg-teal-500 hover:bg-opacity-30"
               >
                 <th>
@@ -72,15 +72,24 @@ const AllUsers = () => {
                   <div className="avatar">
                     <div className="mask mask-squircle w-12 h-12">
                       <img
-                        src={user.image}
+                        src={users.image}
                         alt="Avatar Tailwind CSS Component"
                       />
                     </div>
                   </div>{" "}
                 </th>
-                <td className="text-center">{user.name}</td>
-                <td className="text-center">{user.email}</td>
-                <td className="capitalize text-center">{user.role}</td>
+                <td className="text-center">{users.name}</td>
+                <td className="text-center">{users.email}</td>
+                <td className="capitalize text-center">{users.role}</td>
+                <td
+                  className={`capitalize text-center text-lg ${
+                    users.role === "doctor" && users.status === "pending"
+                      ? "text-red-500"
+                      : "text-teal-700"
+                  }`}
+                >
+                  {users.role === "doctor" ? users.status : "user"}
+                </td>
                 {/* <td>
               <button
                 className="btn btn-ghost bg-orange-300  text-white me-3 hover:bg-orange-400 "
@@ -108,11 +117,11 @@ const AllUsers = () => {
                 Instructor
               </button>
             </td> */}
-                <td className="text-center">
+                {/* <td className="text-center">
                   <button className="bg-gray-800 text-white btn-sm rounded-md text-center">
                     Approve as Doctor
                   </button>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

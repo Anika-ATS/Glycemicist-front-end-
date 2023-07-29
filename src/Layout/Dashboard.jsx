@@ -66,7 +66,7 @@ const Dashboard = () => {
                 <li>
                   {" "}
                   <NavLink
-                    to="/dashboard/enrolledclass"
+                    to="/dashboard/doctorslist"
                     //   [#7bd0f4]
                     className="text-xl font-semibold text-[#64D9B9] my-5 hover:text-[#97d7e8]"
                   >

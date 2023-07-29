@@ -8,9 +8,8 @@ import Dashboard from "../Layout/Dashboard";
 import AllUsers from "../AllUsersDashboards/Admin/AllUsers";
 import Appointment from "../pages/Home/Appointment/Appointment";
 import Doctors from "../pages/AllDoc/Doctors";
+import DoctorsList from "../AllUsersDashboards/Admin/DoctorsList";
 // import Dashboard from "../Layout/Dashboard";
-
-
 
 export const router = createBrowserRouter([
   {
@@ -52,7 +51,11 @@ export const router = createBrowserRouter([
         path: "allusers",
         element: <AllUsers />,
       },
+      {
+        // admin
+        path: "doctorslist",
+        element: <DoctorsList />,
+      },
     ],
   },
 ]);
-
