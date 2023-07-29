@@ -34,17 +34,30 @@ const Footer = () => {
                 <div className='flex flex-col'>
                     <p className='mx-5 mt-3 font-bold  text-[#64d9b9]'>Want to share    your Opinion for Glycemicist?
                     </p>
-                    {/* <span className=' font-bold bg-[#1d2939]'><AiOutlineArrowRight></AiOutlineArrowRight></span> */}
+
+                    <div className='flex'>
+                        {/* 1 */}
+                        <input type="text" placeholder="Your Name" className="flex  mt-10 input input-bordered text-black w-1/2 me-16 " />
+                        {/* 2 */}
+                   
+                        <input type="text" placeholder="Your Opinion" className="flex mt-10 input input-bordered text-black w-1/2  " />
+
+                    </div>
                     
-                    <input type="text" placeholder="Type here" className="flex mx-28 me-16 mt-10 input input-bordered text-black w-1/2  " />
+                    
+
+
                     <div className="mt-2 form-control">
                         
                         <label className="flex input-group mx-20 me-16  ">
-                            <span className='text-[#1d2939] bg-[#64d9b9]'>Email</span>
+                            <span className='text-[#1d2939] bg-[#64d9b9]' type="submit"
+                            value="Email">Email</span>
                             <input type="text" placeholder="Your Email" className="input input-bordered " />
                         </label>
+                 
+                       
                     </div>
-                    </div>
+                </div>
 
                 </div>
                 </div>
