@@ -1,25 +1,32 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import useAdmin from "../../Hooks/useAdmin";
+import {AuthContext} from "../../Providers/AuthProvider";
 
 const AllUsers = () => {
-  const [isAdmin, isAdminLoading] = useAdmin();
+  // const {isAdmin, isAdminLoading} = useAdmin();
   //   console.log(isAdmin);
+  const {user} = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [allusers, setAllUsers] = useState([]);
 
-  const [users, setUsers] = useState([]);
   useEffect(() => {
     const getUsers = async () => {
       try {
+        setIsLoading(true);
         const response = await fetch(
-          "https://glycemist-server.onrender.com/users"
+          `http://localhost:5000/users?email=${user?.email}`
+          // "https://glycemist-server.onrender.com/users"
         );
 
         if (response.ok) {
           const data = await response.json();
-          setUsers(data);
-          console.log(users);
+          setAllUsers(data);
+          console.log(allusers);
         }
       } catch {
         error => console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     getUsers();
@@ -30,6 +37,18 @@ const AllUsers = () => {
       <h2 className="text-center text-2xl py-9 text-teal-900 font-semibold">
         All Users Information
       </h2>
+      {isLoading && (
+        <div className="modal modal-open">
+          <div className="modal-box  bg-blue-100">
+            <div className="loader flex items-center justify-center flex-col ">
+              <p className="text-teal-700 text-2xl text-center py-5 ">
+                Please Wait users are Loading...
+              </p>
+              <span className="loading loading-infinity w-40 text-red-400 text-center"></span>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="overflow-x-auto rounded-lg">
         <table className="table md:w-4/5 mx-auto rounded-xl bg-gray-200">
           {/* head */}
@@ -43,7 +62,7 @@ const AllUsers = () => {
             </tr>
           </thead>
           <tbody className=" bg-white">
-            {users.map((user, index) => (
+            {allusers.map((user, index) => (
               <tr
                 key={user._id}
                 className="hover:bg-teal-500 hover:bg-opacity-30"

@@ -7,6 +7,7 @@ import useAdmin from "../../../Hooks/useAdmin";
 const Navbar = props => {
   const {user, logOut} = useContext(AuthContext);
   const {isAdmin} = useAdmin();
+  console.log(isAdmin);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -86,6 +87,9 @@ const Navbar = props => {
             >
               {NavItems}
             </ul>
+            <label>
+              <h1 className="text-blue-800">{user && user.displayName}</h1>
+            </label>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">

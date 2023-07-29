@@ -1,9 +1,8 @@
-
 // import React, {useState} from "react";
-import { NavLink, Outlet} from "react-router-dom";
+import {NavLink, Outlet} from "react-router-dom";
 import {AiOutlineMenuUnfold} from "react-icons/ai";
-import {FaHome, } from "react-icons/fa";
-import {GiOpenBook} from "react-icons/gi";
+import {FaHome, FaStethoscope, FaUsers} from "react-icons/fa";
+import {RiAdminFill} from "react-icons/ri";
 import {
   // BsPlusCircleFill,
   BsCurrencyExchange,
@@ -60,18 +59,30 @@ const Dashboard = () => {
                     to="/dashboard/allusers"
                     className="text-xl font-normal  text-[#64D9B9] my-5 hover:text-[#97d7e8]"
                   >
-                    <GiOpenBook className="text-2xl text-[#8ccce8] " />
+                    <FaUsers className="text-2xl text-[#8ccce8] " />
                     All Users
                   </NavLink>
                 </li>
                 <li>
+                  {" "}
                   <NavLink
-                    to="/dashboard/manageclasses"
-                    className="text-2xl font-semibold text-white my-5"
+                    to="/dashboard/enrolledclass"
+                    //   [#7bd0f4]
+                    className="text-xl font-semibold text-[#64D9B9] my-5 hover:text-[#97d7e8]"
                   >
-                    <GiOpenBook className="text-3xl text-orange-200" />
-                    Manage Classes
+                    <FaStethoscope className="text-2xl text-[#8ccce8] " />
+                    Approve Doctors
                   </NavLink>
+                </li>
+                <li>
+                  {" "}
+                  <NavLink
+                    to="/dashboard/paymenthistory"
+                    className="text-xl font-semibold text-[#64D9B9]  my-5 hover:text-[#97d7e8]"
+                  >
+                    <RiAdminFill className="text-xl  text-[#8ccce8] " />
+                    Add Admin
+                  </NavLink>{" "}
                 </li>
               </>
             ) : (
@@ -148,4 +159,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
