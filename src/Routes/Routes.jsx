@@ -9,6 +9,7 @@ import AllUsers from "../AllUsersDashboards/Admin/AllUsers";
 import Appointment from "../pages/Home/Appointment/Appointment";
 import Doctors from "../pages/AllDoc/Doctors";
 import DoctorsList from "../AllUsersDashboards/Admin/DoctorsList";
+import MyHealth from "../AllUsersDashboards/Users/MyHealth/MyHealth";
 // import Dashboard from "../Layout/Dashboard";
 
 export const router = createBrowserRouter([
@@ -55,6 +56,11 @@ export const router = createBrowserRouter([
         // admin
         path: "doctorslist",
         element: <DoctorsList />,
+      },
+      // user
+      {
+        path: "myhealth",
+        element: <MyHealth />,
       },
     ],
   },

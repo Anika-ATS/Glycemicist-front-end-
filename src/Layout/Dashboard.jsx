@@ -3,13 +3,19 @@ import {NavLink, Outlet} from "react-router-dom";
 import {AiOutlineMenuUnfold} from "react-icons/ai";
 import {FaHome, FaStethoscope, FaUsers} from "react-icons/fa";
 import {RiAdminFill} from "react-icons/ri";
+
 import {
-  // BsPlusCircleFill,
+  BsCalendar2Check,
   BsCurrencyExchange,
   BsBookmarkCheckFill,
 } from "react-icons/bs";
 import Navbar from "../pages/Shared/NavBar/Navbar";
 import useAdmin from "../Hooks/useAdmin";
+import {
+  FaBriefcaseMedical,
+  FaHeartCircleCheck,
+  FaHeartPulse,
+} from "react-icons/fa6";
 // import useAdmin from "../Hooks/useAdmin";
 // import useInstructor from "../hooks/useInstructor";
 
@@ -125,8 +131,8 @@ const Dashboard = () => {
                     //   [#7bd0f4]
                     className="text-xl font-semibold text-[#64D9B9] my-5 hover:text-[#97d7e8]"
                   >
-                    <BsBookmarkCheckFill className="text-2xl text-[#8ccce8] " />
-                    Enrolled Classes
+                    <FaHeartCircleCheck className="text-2xl text-[#8ccce8] " />
+                    My Health
                   </NavLink>
                 </li>
                 <li>
@@ -135,22 +141,22 @@ const Dashboard = () => {
                     to="/dashboard/paymenthistory"
                     className="text-xl font-semibold text-[#64D9B9]  my-5 hover:text-[#97d7e8]"
                   >
-                    <BsCurrencyExchange className="text-xl  text-[#8ccce8] " />
-                    Payment History
+                    <FaBriefcaseMedical className="text-xl  text-[#8ccce8] " />
+                    Medicines
+                  </NavLink>{" "}
+                </li>
+                <li>
+                  {" "}
+                  <NavLink
+                    to="/dashboard/paymenthistory"
+                    className="text-xl font-semibold text-[#64D9B9]  my-5 hover:text-[#97d7e8]"
+                  >
+                    <BsCalendar2Check className="text-xl  text-[#8ccce8] " />
+                    Appointments
                   </NavLink>{" "}
                 </li>
               </>
             )}
-            {/* <hr />
-            <li>
-              <NavLink
-                to="/"
-                className="text-xl font-semibold text-[#7bd0f4] my-5"
-              >
-                <FaHome className="text-xl text-[#f47b8f]" />
-                Home
-              </NavLink>
-            </li> */}
           </ul>
         </div>
       </div>
