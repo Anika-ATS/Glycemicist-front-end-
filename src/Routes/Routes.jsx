@@ -4,13 +4,16 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import DPrediction from "../pages/DPrediction/DPrediction";
-import Dashboard from "../Layout/Dashboard";
+// import Dashboard from "../Layout/Dashboard";
 import AllUsers from "../AllUsersDashboards/Admin/AllUsers";
 import Appointment from "../pages/Home/Appointment/Appointment";
 import Doctors from "../pages/AllDoc/Doctors";
 import DoctorsList from "../AllUsersDashboards/Admin/DoctorsList";
 import MyHealth from "../AllUsersDashboards/Users/MyHealth/MyHealth";
-// import Dashboard from "../Layout/Dashboard";
+import DiagnosticData from "../pages/Shared/DiagnosticArea/DiagnosticData";
+import Dashboard from "../Layout/Dashboard";
+
+
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +44,11 @@ export const router = createBrowserRouter([
         path: "/appointment",
         element: <Appointment></Appointment>,
       },
+      {
+        path: "/diagnostic",
+        // element:<Daignostic></Daignostic>
+        element:<DiagnosticData></DiagnosticData>
+      }
     ],
   },
   {

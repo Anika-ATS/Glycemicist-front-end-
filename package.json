@@ -21,7 +21,11 @@
     "react-icons": "^4.10.1",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.14.2",
+<<<<<<< HEAD
     "recharts": "^2.7.2",
+=======
+    "react-tabs": "^6.0.2",
+>>>>>>> 3eefee84d17c6894bbb5c6308ffa893278b19e53
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.7.20"
   },

@@ -58,14 +58,15 @@ const BP = () => {
   const {
     register,
     handleSubmit,
-    control,
+   
     reset,
 
     formState: {errors},
   } = useForm();
   const onSubmit = data => {
-    console.log(data);
-    // reset();
+    const currentDate = new Date().toISOString();
+    console.log(data, currentDate);
+    reset();
   };
   return (
     <div className="grid md:grid-cols-5 grid-cols-1 space-x-0 p-0">
