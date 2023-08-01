@@ -11,21 +11,24 @@
   },
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.3",
+    "@react-pdf/renderer": "^3.1.12",
     "axios": "^1.4.0",
+    "file-saver": "^2.0.5",
     "firebase": "^10.0.0",
+    "html2canvas": "^1.4.1",
+    "html2pdf.js": "^0.10.1",
+    "jspdf": "^2.5.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.2",
     "react-icons": "^4.10.1",
+    "react-pdf-js": "^5.1.0",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.14.2",
-<<<<<<< HEAD
-    "recharts": "^2.7.2",
-=======
     "react-tabs": "^6.0.2",
->>>>>>> 3eefee84d17c6894bbb5c6308ffa893278b19e53
+    "recharts": "^2.7.2",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.7.20"
   },

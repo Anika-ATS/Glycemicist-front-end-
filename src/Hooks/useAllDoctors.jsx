@@ -7,7 +7,7 @@ const useAllDoctors = () => {
   const {user} = useContext(AuthContext);
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/doctors?email=${user?.email}`)
+    fetch(`https://glycemist-server.onrender.com/doctors?email=${user?.email}`)
       .then(response => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -16,7 +16,8 @@ const useAllDoctors = () => {
       })
       .then(data => {
         setAllDoc(data.alldoctorsapproved);
-        console.log(AllDoc, data.isDoctor.doctor);
+        setIsDoctor(data.isDoctor.doctor);
+        // console.log(AllDoc, data.isDoctor.doctor);
       })
       .catch(error => {
         console.log("Error:", error);

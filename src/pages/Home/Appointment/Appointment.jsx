@@ -3,6 +3,16 @@ import pic from "../../../assets/Images/Newsheadlessdoc.jpg";
 import {Controller, useForm} from "react-hook-form";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useDoctors from "../../../Hooks/useAllDoctors";
+import axios from "axios";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import {storage} from "../../../firebase/firebase.config";
+import Swal from "sweetalert2";
+// import {storage} from "../firebase/firebase.config";
 
 const Appointment = () => {
   const {AllDoc} = useDoctors();
@@ -16,9 +26,61 @@ const Appointment = () => {
 
     formState: {errors},
   } = useForm();
-  const onSubmit = data => {
+  const onSubmit = async data => {
     console.log(data);
-    reset();
+    const [doctorEmailValue, doctorName] = data.doctorEmail.split("|");
+    console.log(doctorEmailValue, doctorName);
+    try {
+      const file = data.file[0];
+      const storageRef = ref(storage, `uploads/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on("state_changed", snapshot => {
+        // You can handle progress here if needed
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+      });
+
+      await uploadTask;
+
+      const downloadURL = await getDownloadURL(storageRef);
+      console.log("Download URL:", downloadURL);
+      const formData = {
+        name: data.name,
+        age: data.age,
+        patientEmail: data.patientEmail,
+        doctorEmail: doctorEmailValue,
+        doctorName: doctorName,
+        mobileNumber: data.mobileNumber,
+        problems: data.problems,
+        date: data.date,
+        fileURL: downloadURL,
+      };
+      // Send the form data to the server (MongoDB)
+
+      axios
+        .post("http://localhost:5000/appointment", formData)
+        .then(response => {
+          if (response.data.insertedId) {
+            console.log(response.data.insertedId);
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Appointment has been booked!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            reset();
+          }
+        })
+        .catch(error => {
+          // Handle errors here
+          console.log("Error:", error);
+        });
+    } catch (error) {
+      console.error("Error uploading file to Firebase:", error);
+    }
   };
 
   return (
@@ -30,9 +92,9 @@ const Appointment = () => {
         ></SectionTitle>
       </div>
 
-      <div className=" hero h-[700px]" style={{backgroundImage: `url(${pic})`}}>
+      <div className=" hero " style={{backgroundImage: `url(${pic})`}}>
         <div className="hero-overlay bg-opacity-60 "></div>
-        <div className=" grid grid-cols-2 ">
+        <div className=" grid grid-cols-2 my-20 py-20">
           <div
             id={staticId}
             className="card  mx-24 w-10/12 shadow-2xl bg-base-200 hover:-translate-y-5 group  border border-[#1d2939] hover:bg-gradient-to-r 
@@ -114,15 +176,22 @@ const Appointment = () => {
                       className="mx-auto w-full  text-slate-500 text-md p-3 border border-slate-300 rounded-md"
                       {...field}
                     >
-                      <option value="" disabled className="text-slate-300">
-                        <span className="text-slate-300">Select a Doctor</span>
+                      {/* <option
+                        value="Seelect a Doctor"
+                        disabled
+                        className="text-slate-300"
+                      >
+                        Select a Doctor
+                      </option> */}
+                      <option value="DEFAULT" disabled>
+                        Please select a Doctor
                       </option>
 
                       {AllDoc.map(item => (
                         <option
                           className="py-3 rounded-md"
                           key={item.email}
-                          value={item.email}
+                          value={`${item.email}|${item.name}`}
                         >
                           {`${item.name}\u00A0\u00A0\u00A0- (${item.email})`}
                         </option>
@@ -134,28 +203,9 @@ const Appointment = () => {
                   <div className="text-red-600">This field is required</div>
                 )}
               </div>
-              {/*Doctors email */}
-              {/* <div className="form-control">
-                <input
-                  type="email"
-                  {...register("doctorEmail", {
-                    required: true,
-                    // pattern: {
-                    //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/,
-                    //     message: 'Invalid email address',
-                    //   },
-                    //  pattern:/(?=.*[a-z])(?=.*[0-9])+@+(gmail.com)/
-                  })}
-                  placeholder="Doctor's email"
-                  name="doctorEmail"
-                  className="input input-bordered"
-                />
-                {errors.doctorEmail && (
-                  <span className="text-red-600">This field is required</span>
-                )}
-              </div> */}
+
               {/* phone number */}
-              <div>
+              <div className="form-control">
                 <Controller
                   name="mobileNumber"
                   control={control}
@@ -211,6 +261,27 @@ const Appointment = () => {
                 />
                 {errors.date && (
                   <span className="text-red-600 ">This field is required</span>
+                )}
+              </div>
+              {/*user report upload if they want to */}
+              <div className="form-control">
+                <label
+                  htmlFor="fileInput"
+                  className="text-teal-700 text-lg font-semibold group-hover:text-white"
+                >
+                  Download and attach medical history report for doctor.
+                </label>
+                <input
+                  type="file"
+                  {...register("file", {
+                    required: "Please select a file",
+                  })}
+                  id="fileInput"
+                  name="file"
+                  className="input input-bordered py-3 w-full "
+                />
+                {errors.file && (
+                  <span className="text-red-600">{errors.file.message}</span>
                 )}
               </div>
               <div className="form-control mt-6">

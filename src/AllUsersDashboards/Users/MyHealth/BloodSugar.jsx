@@ -8,14 +8,12 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  Label,
 } from "recharts";
 import {Controller, useForm} from "react-hook-form";
-import axios, {Axios} from "axios";
-import Swal from "sweetalert2";
 import {AuthContext} from "../../../Providers/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 import {formatDateTime} from "./Utilities";
-
 const data = [
   {
     name: "Page A",
@@ -60,10 +58,7 @@ const data = [
     amt: 2100,
   },
 ];
-
-const BP = () => {
-  const {user} = useContext(AuthContext);
-  console.log(user);
+const BloodSugar = () => {
   const {
     register,
     handleSubmit,
@@ -72,14 +67,52 @@ const BP = () => {
 
     formState: {errors},
   } = useForm();
-  const [bloodPressureData, setBloodPressureData] = useState([]);
+
+  // getting current user
+  const {user} = useContext(AuthContext);
+  const [bloodSugarData, setBloodSugarData] = useState([]);
+
+  const fetchHealthData = async () => {
+    try {
+      const response = await fetch(
+        `https://glycemist-server.onrender.com/myhealth/${user?.email}`
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setBloodSugarData(data.bloodSugar);
+
+      console.log("Data:", data, "bloodSugarData:", bloodSugarData, Date);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      // Handle the error, e.g., show a user-friendly error message
+    }
+  };
+  useEffect(() => {
+    fetchHealthData();
+  }, []);
+
+  // to get the range in y-axis
+  const minBloodSugarValue = Math.min(
+    ...bloodSugarData.map(item => Number(item.bloodsugar))
+  );
+  const maxBloodSugarValue = Math.max(
+    ...bloodSugarData.map(item => Number(item.bloodsugar))
+  );
+
+  // Create a new array of data with the formatted date and time
+  const formattedBloodSugarData = bloodSugarData.map(item => ({
+    ...item,
+    date: formatDateTime(item.date),
+  }));
 
   const onSubmit = data => {
     console.log(data);
+
     axios
       .patch(`https://glycemist-server.onrender.com/patient/${user?.email}`, {
-        systolic: data.sysp,
-        diastolic: data.dysp,
+        bloodsugar: data.bloodsugar,
         date: data.time,
       })
       .then(response => {
@@ -87,61 +120,33 @@ const BP = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `Blood pressure values added`,
+            title: `Blood Sugar saved!`,
             showConfirmButton: false,
             timer: 1500,
           });
+          fetchHealthData();
           reset();
         }
-        fetchBloodPressure();
       })
       .catch(error => {
         // Handle errors here
         console.log("Error:", error);
       });
+    // reset();
   };
-  console.log(`https://glycemist-server.onrender.com/myhealth/${user?.email}`);
-  function fetchBloodPressure() {
-    fetch(`https://glycemist-server.onrender.com/myhealth/${user?.email}`)
-      .then(response => response.json())
-      .then(data => {
-        setBloodPressureData(data);
-        console.log("bloodPressureData,", bloodPressureData);
-      })
-      .catch(error => console.error("Error fetching data:", error));
-  }
-
-  useEffect(() => {
-    fetch(`https://glycemist-server.onrender.com/myhealth/${user?.email}`)
-      .then(response => response.json())
-      .then(data => {
-        setBloodPressureData(data.bloodPressure);
-        console.log("Data,", data, "bloodPressureData", bloodPressureData);
-      })
-      .catch(error => console.error("Error fetching data:", error));
-  }, []);
-
-  const formattedBloodPressureData = bloodPressureData
-    ? bloodPressureData.map(item => ({
-        ...item,
-        date: formatDateTime(item.date),
-      }))
-    : [];
-
-  // console.log("type", typeof bloodPressureData[0].date);
   return (
     <div className="grid md:grid-cols-5 grid-cols-1 space-x-0 p-0">
       <div
         style={{width: "100%"}}
-        className="lg:col-span-3 col-span-5 py-4 "
-        id="bp-chart"
+        className="lg:col-span-3 col-span-5 py-4"
+        id="blsugar"
       >
-        {" "}
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={500}>
           <LineChart
             width={100}
-            height={300}
-            data={formattedBloodPressureData}
+            height="100%"
+            // data={bloodSugarData}
+            data={formattedBloodSugarData}
             margin={{
               top: 5,
               left: 20,
@@ -150,41 +155,16 @@ const BP = () => {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" interval={1}>
-              {" "}
-              <Label
-                value="Date"
-                position="insideleft"
-                offset={0}
-                fontSize={22}
-                fill="#163750"
-              />
-            </XAxis>
-            <YAxis>
-              {" "}
-              <Label
-                value="Blood Pressure"
-                angle={-90}
-                position="insideLeft"
-                fontSize={22}
-                fill="#163750"
-              />
-            </YAxis>
+            <XAxis dataKey="date" interval={1} />
+            <YAxis domain={[minBloodSugarValue, maxBloodSugarValue]} />
             <Tooltip />
-            <Legend verticalAlign="top" align="right" fontSize={18} />
+            <Legend verticalAlign="top" align="center" fontSize={18} />
             <Line
-              name="Systolic(Upper Value)"
               type="monotone"
-              dataKey="systolic"
-              stroke="#8884d8"
+              dataKey="bloodsugar"
+              name="Bloodsugar"
+              stroke="teal"
               activeDot={{r: 8}}
-              strokeWidth={2}
-            />
-            <Line
-              name="Diastolic(Lower Value)"
-              type="natural"
-              dataKey="diastolic"
-              stroke="#ff2c9c"
               strokeWidth={2}
             />
           </LineChart>
@@ -196,40 +176,28 @@ const BP = () => {
                 from-[#64d9b9] to-[#1d2939] "
         >
           <h1 className="mt-3 px-2 shadow-2xl group-hover:text-white text-2xl mx-auto text-[#163750] font-semibold ">
-            Blood Pressure
+            Blood Sugar Levels
           </h1>
           <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
             <div className="form-control">
               <input
                 type="number"
-                {...register("sysp", {required: true})}
-                placeholder="Systolic Pressure(higher value)"
-                name="sysp"
+                {...register("bloodsugar", {required: true})}
+                placeholder="Blood Sugar(mm/Hg)"
+                name="bloodsugar"
                 className="input input-bordered"
                 rules={{
                   min: 1,
                 }}
               />
-              {errors.name && (
+              {errors.bloodsugar && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
+            <p className="text-green-500 my-2 group-hover:text-white font-medium">
+              Please Enter the date and time of measurement
+            </p>
             <div className="form-control">
-              <input
-                type="number"
-                {...register("dysp", {required: true})}
-                placeholder="Diastolic Pressure(lower value)"
-                name="dysp"
-                className="input input-bordered"
-              />
-              {errors.name && (
-                <span className="text-red-600">This field is required</span>
-              )}
-            </div>
-            <div className="form-control">
-              <span className="text-green-500 my-2 hover:text-white font-medium">
-                Please Enter the date and time of measurement
-              </span>
               <input
                 type="datetime-local"
                 {...register("time", {required: true})}
@@ -241,9 +209,10 @@ const BP = () => {
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
+
             <div className="form-control mt-6">
               <input
-                className="btn btn-md rounded-2xl w-1/2 mx-auto bg-[#163750] text-xl  text-white  "
+                className="btn btn-md rounded-2xl w-1/2 mx-auto bg-[#163750] text-xl  text-white"
                 type="submit"
                 value="Add"
               />
@@ -255,4 +224,4 @@ const BP = () => {
   );
 };
 
-export default BP;
+export default BloodSugar;

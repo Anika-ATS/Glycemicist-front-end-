@@ -8,6 +8,7 @@ import {
   BsCalendar2Check,
   BsCurrencyExchange,
   BsBookmarkCheckFill,
+  BsPlusCircleFill,
 } from "react-icons/bs";
 import Navbar from "../pages/Shared/NavBar/Navbar";
 import useAdmin from "../Hooks/useAdmin";
@@ -16,26 +17,18 @@ import {
   FaHeartCircleCheck,
   FaHeartPulse,
 } from "react-icons/fa6";
+import {generateReport} from "../AllUsersDashboards/Users/MyHealth/Utilities";
+import useAllDoctors from "../Hooks/useAllDoctors";
 // import useAdmin from "../Hooks/useAdmin";
 // import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
   const {isAdmin} = useAdmin();
-  //   const [isInstructor] = useInstructor();
-  //   const [users, setUsers] = useState([]);
+  const {isDoctor} = useAllDoctors();
+  const handleGenerateReportClick = () => {
+    generateReport("open");
+  };
 
-  //   const fetchUsers = async () => {
-  //     try {
-  //       const res = await axios.get("/users");
-  //       setUsers(res.data);
-  //     } catch (error) {
-  //       console.error("Error fetching users:", error);
-  //     }
-  //   };
-
-  //   useEffect(() => {
-  //     fetchUsers();
-  //   }, []);
   return (
     <>
       <Navbar color="bg-[#163750]" liColor="text-[#64D9B9]" />
@@ -54,7 +47,7 @@ const Dashboard = () => {
             <AiOutlineMenuUnfold />{" "}
           </label>
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side fixed">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full    text-base-content bg-[#163750]">
             {/* Sidebar content here */}
@@ -80,54 +73,34 @@ const Dashboard = () => {
                     Approve Doctors
                   </NavLink>
                 </li>
+              </>
+            ) : isDoctor ? (
+              <>
                 <li>
-                  {" "}
                   <NavLink
-                    to="/dashboard/paymenthistory"
-                    className="text-xl font-semibold text-[#64D9B9]  my-5 hover:text-[#97d7e8]"
+                    to="/dashboard/allpatients"
+                    className="text-xl font-normal  text-[#64D9B9] my-5 hover:text-[#97d7e8]"
                   >
-                    <RiAdminFill className="text-xl  text-[#8ccce8] " />
-                    Add Admin
-                  </NavLink>{" "}
+                    <BsPlusCircleFill className="text-2xl text-[#8ccce8]" />
+                    All Patients
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/allappointments"
+                    className="text-xl font-normal  text-[#64D9B9] my-5 hover:text-[#97d7e8]"
+                  >
+                    <FaStethoscope className="text-2xl text-[#8ccce8]" />
+                    All Appointments
+                  </NavLink>
                 </li>
               </>
             ) : (
-              // : isInstructor ? (
-              //   <>
-              //     <li>
-              //       <NavLink
-              //         to="/dashboard/addclass"
-              //         className="text-2xl font-semibold text-white my-5"
-              //       >
-              //         <BsPlusCircleFill className="text-3xl text-orange-200" />
-              //         Add Class
-              //       </NavLink>
-              //     </li>
-              //     <li>
-              //       <NavLink
-              //         to="/dashboard/myclasses"
-              //         className="text-2xl font-semibold text-white my-5"
-              //       >
-              //         <GiOpenBook className="text-3xl text-orange-200" />
-              //         My Classes
-              //       </NavLink>
-              //     </li>
-              //   </>
-              // )
               <>
-                {/* <li>
-                  <NavLink
-                    to="/dashboard/allusers"
-                    className="text-xl font-normal  text-[#64D9B9] my-5 hover:text-[#97d7e8]"
-                  >
-                    <GiOpenBook className="text-2xl text-[#8ccce8] " />
-                    All Users
-                  </NavLink>
-                </li> */}
                 <li>
                   {" "}
                   <NavLink
-                    to="/dashboard/enrolledclass"
+                    to="/dashboard/myhealth"
                     //   [#7bd0f4]
                     className="text-xl font-semibold text-[#64D9B9] my-5 hover:text-[#97d7e8]"
                   >
@@ -138,7 +111,7 @@ const Dashboard = () => {
                 <li>
                   {" "}
                   <NavLink
-                    to="/dashboard/paymenthistory"
+                    to="/dashboard/medicine"
                     className="text-xl font-semibold text-[#64D9B9]  my-5 hover:text-[#97d7e8]"
                   >
                     <FaBriefcaseMedical className="text-xl  text-[#8ccce8] " />
@@ -148,13 +121,20 @@ const Dashboard = () => {
                 <li>
                   {" "}
                   <NavLink
-                    to="/dashboard/paymenthistory"
+                    to="/dashboard/myappointments"
                     className="text-xl font-semibold text-[#64D9B9]  my-5 hover:text-[#97d7e8]"
                   >
                     <BsCalendar2Check className="text-xl  text-[#8ccce8] " />
                     Appointments
                   </NavLink>{" "}
                 </li>
+                <hr />
+                <button
+                  className="btn bg-transparent outline-[#64D9B9] hover:bg-[#64D9B9] text-[#64D9B9] hover:text-white w-4/5  mt-5"
+                  onClick={handleGenerateReportClick}
+                >
+                  Generate Report
+                </button>{" "}
               </>
             )}
           </ul>

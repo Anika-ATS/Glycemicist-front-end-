@@ -3,16 +3,20 @@ import logo from "../../../assets/Images/logo2-removebg-preview.png";
 import {AuthContext} from "../../../Providers/AuthProvider";
 import {useContext} from "react";
 import useAdmin from "../../../Hooks/useAdmin";
+import {generateReport} from "../../../AllUsersDashboards/Users/MyHealth/Utilities";
+import useAllDoctors from "../../../Hooks/useAllDoctors";
 
 const Navbar = props => {
   const {user, logOut} = useContext(AuthContext);
   const {isAdmin} = useAdmin();
+  const {isDoctor} = useAllDoctors();
   console.log(isAdmin);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch(error => console.log(error));
   };
+
   console.log(user);
   const NavItems = (
     <>
@@ -26,9 +30,9 @@ const Navbar = props => {
           to={
             isAdmin
               ? "/dashboard/allusers"
-              : // : isInstructor?
-                //  "/dashboard/addclass"
-                "/dashboard/myhealth"
+              : isDoctor
+              ? "/dashboard/allpatients"
+              : "/dashboard/myhealth"
           }
           className={`${props.liColor} text-lg font-semibold`}
         >
@@ -42,7 +46,7 @@ const Navbar = props => {
           </span>{" "}
         </Link>
       </li>
-      
+
       <li>
         <Link to="/prediction">
           <span className={`${props.liColor} text-lg font-semibold`}>
@@ -62,10 +66,13 @@ const Navbar = props => {
   );
   // fixed z-10  bg-opacity-50 text-white  mx-auto
   return (
-    <div className={`navbar  ${props.color} `}>
+    <div className={`navbar  ${props.color}`}>
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label
+            tabIndex={0}
+            className="btn btn-ghost text-teal-400 lg:hidden "
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"

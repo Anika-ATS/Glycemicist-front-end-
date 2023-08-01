@@ -14,7 +14,7 @@ const AllUsers = () => {
       try {
         setIsLoading(true);
         const response = await fetch(
-          // `http://localhost:5000/users?email=${user?.email}`
+          // `https://glycemist-server.onrender.com/users?email=${user?.email}`
           `https://glycemist-server.onrender.com/users?email=${user?.email}`
         );
 

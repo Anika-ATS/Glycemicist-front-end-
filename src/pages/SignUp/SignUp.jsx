@@ -42,7 +42,7 @@ const SignUp = () => {
           };
 
           axios
-            .post("http://localhost:5000/users", newUser)
+            .post("https://glycemist-server.onrender.com/users", newUser)
 
             .then(response => {
               console.log(response);

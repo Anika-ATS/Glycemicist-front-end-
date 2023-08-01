@@ -14,7 +14,7 @@ const useAdmin = () => {
 
         try {
           const response = await fetch(
-            `http://localhost:5000/users/admin/${user?.email}`
+            `https://glycemist-server.onrender.com/users/admin/${user?.email}`
           );
           if (response.ok) {
             const data = await response.json();

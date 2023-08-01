@@ -13,7 +13,9 @@ import MyHealth from "../AllUsersDashboards/Users/MyHealth/MyHealth";
 import DiagnosticData from "../pages/Shared/DiagnosticArea/DiagnosticData";
 import Dashboard from "../Layout/Dashboard";
 
-
+import UserAppointments from "../AllUsersDashboards/Users/Appointments/UserAppointments";
+import PatientAppointment from "../AllUsersDashboards/Doctors/PatientAppointment";
+import MedicineList from "../AllUsersDashboards/Users/Medicines/MedicineList";
 
 export const router = createBrowserRouter([
   {
@@ -47,8 +49,8 @@ export const router = createBrowserRouter([
       {
         path: "/diagnostic",
         // element:<Daignostic></Daignostic>
-        element:<DiagnosticData></DiagnosticData>
-      }
+        element: <DiagnosticData></DiagnosticData>,
+      },
     ],
   },
   {
@@ -65,10 +67,23 @@ export const router = createBrowserRouter([
         path: "doctorslist",
         element: <DoctorsList />,
       },
-      // user
+
+      // doctor
+      {path: "allpatients", element: <PatientAppointment />},
+      {path: "allappointments", element: <PatientAppointment />},
+
+      // user->private
       {
         path: "myhealth",
         element: <MyHealth />,
+      },
+      {
+        path: "medicine",
+        element: <MedicineList />,
+      },
+      {
+        path: "myappointments",
+        element: <UserAppointments />,
       },
     ],
   },

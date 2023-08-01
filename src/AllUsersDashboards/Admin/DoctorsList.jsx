@@ -6,11 +6,13 @@ const DoctorsList = () => {
   const {user} = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
   const [doctors, setDoctors] = useState([]);
-  // console.log(`http://localhost:5000/alldoctors?email=${user?.email}`);
+  // console.log(`https://glycemist-server.onrender.com/alldoctors?email=${user?.email}`);
   // function to get users
   const fetchDoctorsData = () => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/alldoctors?email=${user?.email}`)
+    fetch(
+      `https://glycemist-server.onrender.com/alldoctors?email=${user?.email}`
+    )
       .then(response => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -35,7 +37,7 @@ const DoctorsList = () => {
   // approve doctor
   const approveDoctor = doc => {
     axios
-      .patch(`http://localhost:5000/doctors/${doc._id}`, {
+      .patch(`https://glycemist-server.onrender.com/doctors/${doc._id}`, {
         status: "approved",
         clicked: true,
       })
