@@ -5,6 +5,23 @@ import Swal from "sweetalert2";
 
 const AddMedicine = () => {
   const {user} = useContext(AuthContext);
+  const [med, setMed] = useState([]);
+  // const fetchMedicines = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `http://localhost:5000/medicines/${user?.email}`
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
+  //     }
+  //     const data = await response.json();
+  //     setMed(data);
+  //     console.log(med);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //     // Handle the error, e.g., show a user-friendly error message
+  //   }
+  // };
   const [medicines, setMedicines] = useState([
     {
       medicine_name: "",
@@ -55,7 +72,7 @@ const AddMedicine = () => {
   const handleSubmit = async event => {
     event.preventDefault();
     // Process and submit form data here
-    console.log(medicines);
+    console.log(...medicines);
     try {
       // Make a POST request to your backend API endpoint
       const response = await axios.patch(
@@ -67,10 +84,11 @@ const AddMedicine = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `Blood Sugar saved!`,
+          title: `Medicine added!`,
           showConfirmButton: false,
           timer: 1500,
         });
+        // fetchMedicines();
       }
 
       console.log(

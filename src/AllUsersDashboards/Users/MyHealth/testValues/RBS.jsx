@@ -37,26 +37,26 @@ const RBS = () => {
   // fetching the values to show in graph
   const [RBSData, setRBSData] = useState([]);
 
-  const fetchRBSHealthData = async () => {
-    try {
-      const response = await fetch(
-        `https://glycemist-server.onrender.com/myhealth/${user?.email}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      setRBSData(data.RBS);
+  // const fetchRBSHealthData = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://glycemist-server.onrender.com/myhealth/${user?.email}`
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
+  //     }
+  //     const data = await response.json();
+  //     setRBSData(data.RBS);
 
-      console.log("Data:", data.RBS, "rbs:", RBSData);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      // Handle the error, e.g., show a user-friendly error message
-    }
-  };
-  useEffect(() => {
-    fetchRBSHealthData();
-  }, []);
+  //     console.log("Data:", data.RBS, "rbs:", RBSData);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //     // Handle the error, e.g., show a user-friendly error message
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetchRBSHealthData();
+  // }, []);
 
   // getting the values and storing
   const onSubmitRBS = data => {
@@ -88,6 +88,7 @@ const RBS = () => {
       });
   };
   // to get the range in y-axis
+
   const minRBSValue = Math.min(...RBSData.map(item => Number(item.RBS)));
   const maxRBSValue = Math.max(...RBSData.map(item => Number(item.RBS)));
   const formattedRBSData = RBSData.map(item => ({

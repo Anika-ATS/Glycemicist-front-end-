@@ -14,6 +14,7 @@ import {AuthContext} from "../../../Providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import {formatDateTime} from "./Utilities";
+import moment from "moment";
 const data = [
   {
     name: "Page A",
@@ -94,24 +95,30 @@ const BloodSugar = () => {
   }, []);
 
   // to get the range in y-axis
-  const minBloodSugarValue = Math.min(
-    ...bloodSugarData.map(item => Number(item.bloodsugar))
-  );
-  const maxBloodSugarValue = Math.max(
-    ...bloodSugarData.map(item => Number(item.bloodsugar))
-  );
+  // const minBloodSugarValue = Math.min(
+  //   ...bloodSugarData.map(item => Number(item.bloodsugar))
+  // );
+  // const maxBloodSugarValue = Math.max(
+  //   ...bloodSugarData.map(item => Number(item.bloodsugar))
+  // );
 
   // Create a new array of data with the formatted date and time
-  const formattedBloodSugarData = bloodSugarData.map(item => ({
-    ...item,
-    date: formatDateTime(item.date),
-  }));
-
+  const formattedBloodSugarData =
+    bloodSugarData !== undefined
+      ? bloodSugarData.map(item => ({
+          ...item,
+          date: moment(item.date).format("DD MMM YY"),
+        }))
+      : [];
+  console.log(formattedBloodSugarData);
   const onSubmit = data => {
     console.log(data);
-
+    console.log(
+      `https://glycemist-server.onrender.com/patient/${user?.email}`,
+      `http://localhost:5000/patient/${user?.email}`
+    );
     axios
-      .patch(`https://glycemist-server.onrender.com/patient/${user?.email}`, {
+      .patch(`http://localhost:5000/patient/${user?.email}`, {
         bloodsugar: data.bloodsugar,
         date: data.time,
       })
@@ -155,8 +162,8 @@ const BloodSugar = () => {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" interval={1} />
-            <YAxis domain={[minBloodSugarValue, maxBloodSugarValue]} />
+            <XAxis dataKey="date" interval={0} />
+            <YAxis />
             <Tooltip />
             <Legend verticalAlign="top" align="center" fontSize={18} />
             <Line

@@ -33,26 +33,26 @@ const HbA1c = () => {
     formState: {errors},
   } = useForm();
 
-  const fetchHBHealthData = async () => {
-    try {
-      const response = await fetch(
-        `https://glycemist-server.onrender.com/myhealth/${user?.email}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      setHbData(data.HbA1c);
+  // const fetchHBHealthData = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://glycemist-server.onrender.com/myhealth/${user?.email}`
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
+  //     }
+  //     const data = await response.json();
+  //     setHbData(data.HbA1c);
 
-      console.log("Data:", data.HbA1c, "hb:", HbData);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      // Handle the error, e.g., show a user-friendly error message
-    }
-  };
-  useEffect(() => {
-    fetchHBHealthData();
-  }, []);
+  //     console.log("Data:", data.HbA1c, "hb:", HbData);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //     // Handle the error, e.g., show a user-friendly error message
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetchHBHealthData();
+  // }, []);
 
   const onSubmitRBS = data => {
     console.log(data);
@@ -82,8 +82,8 @@ const HbA1c = () => {
       });
   };
   // to set the range in y-axis
-  const minHbValue = Math.min(...HbData.map(item => Number(item.HbA1c)));
-  const maxHbValue = Math.max(...HbData.map(item => Number(item.HbA1c)));
+  // const minHbValue = Math.min(...HbData.map(item => Number(item.HbA1c)));
+  // const maxHbValue = Math.max(...HbData.map(item => Number(item.HbA1c)));
 
   // Formatting date and time in x-axis for Hb data
   const formattedHbData = HbData.map(item => ({
@@ -103,7 +103,8 @@ const HbA1c = () => {
           <BarChart data={formattedHbData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" interval={1} />
-            <YAxis domain={[minHbValue - 1, maxHbValue]} />
+            {/* domain={[minHbValue - 1, maxHbValue]}  */}
+            <YAxis />
             <Tooltip />
             <Legend />
             {/* dataKey="HbA1c" */}

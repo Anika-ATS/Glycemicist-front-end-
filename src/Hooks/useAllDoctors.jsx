@@ -2,11 +2,11 @@ import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
 const useAllDoctors = () => {
   const [AllDoc, setAllDoc] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isDoctorLoading, setIsDoctorLoading] = useState(true);
   const [isDoctor, setIsDoctor] = useState(null);
   const {user} = useContext(AuthContext);
   useEffect(() => {
-    setIsLoading(true);
+    setIsDoctorLoading(true);
     fetch(`https://glycemist-server.onrender.com/doctors?email=${user?.email}`)
       .then(response => {
         if (!response.ok) {
@@ -23,10 +23,10 @@ const useAllDoctors = () => {
         console.log("Error:", error);
       })
       .finally(() => {
-        setIsLoading(false);
+        setIsDoctorLoading(false);
       });
   }, []);
-  return {AllDoc, isLoading, isDoctor};
+  return {AllDoc, isDoctorLoading, isDoctor};
 };
 
 export default useAllDoctors;

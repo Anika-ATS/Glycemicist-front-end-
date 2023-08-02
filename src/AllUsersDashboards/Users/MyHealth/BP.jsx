@@ -105,7 +105,7 @@ const BP = () => {
     fetch(`https://glycemist-server.onrender.com/myhealth/${user?.email}`)
       .then(response => response.json())
       .then(data => {
-        setBloodPressureData(data);
+        setBloodPressureData(data.bloodPressure);
         console.log("bloodPressureData,", bloodPressureData);
       })
       .catch(error => console.error("Error fetching data:", error));
@@ -121,12 +121,12 @@ const BP = () => {
       .catch(error => console.error("Error fetching data:", error));
   }, []);
 
-  const formattedBloodPressureData = bloodPressureData
-    ? bloodPressureData.map(item => ({
-        ...item,
-        date: formatDateTime(item.date),
-      }))
-    : [];
+  // const formattedBloodPressureData = bloodPressureData
+  //   ? bloodPressureData.map(item => ({
+  //       ...item,
+  //       date: formatDateTime(item.date),
+  //     }))
+  //   : [];
 
   // console.log("type", typeof bloodPressureData[0].date);
   return (
@@ -141,7 +141,7 @@ const BP = () => {
           <LineChart
             width={100}
             height={300}
-            data={formattedBloodPressureData}
+            data={bloodPressureData}
             margin={{
               top: 5,
               left: 20,

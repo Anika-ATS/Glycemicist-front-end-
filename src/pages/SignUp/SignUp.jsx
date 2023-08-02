@@ -39,6 +39,10 @@ const SignUp = () => {
             image: data.photo,
             role: data.category,
             status: "pending",
+            bloodPressure: [],
+            bloodSugar: [],
+            HbA1c: [],
+            RBS: [],
           };
 
           axios

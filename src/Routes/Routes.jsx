@@ -16,6 +16,10 @@ import Dashboard from "../Layout/Dashboard";
 import UserAppointments from "../AllUsersDashboards/Users/Appointments/UserAppointments";
 import PatientAppointment from "../AllUsersDashboards/Doctors/PatientAppointment";
 import MedicineList from "../AllUsersDashboards/Users/Medicines/MedicineList";
+import AllPatients from "../AllUsersDashboards/Doctors/AllPatients";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import DoctorRoute from "./DoctorRoute";
 
 export const router = createBrowserRouter([
   {
@@ -44,7 +48,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/appointment",
-        element: <Appointment></Appointment>,
+        element: (
+          <PrivateRoute>
+            <Appointment></Appointment>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/diagnostic",
@@ -55,35 +63,76 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         // admin
         path: "allusers",
-        element: <AllUsers />,
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
       },
       {
         // admin
         path: "doctorslist",
-        element: <DoctorsList />,
+        element: (
+          <AdminRoute>
+            {" "}
+            <DoctorsList />{" "}
+          </AdminRoute>
+        ),
       },
 
       // doctor
-      {path: "allpatients", element: <PatientAppointment />},
-      {path: "allappointments", element: <PatientAppointment />},
+      {
+        path: "allpatients",
+        element: (
+          <DoctorRoute>
+            <AllPatients />
+          </DoctorRoute>
+        ),
+      },
+      {
+        path: "allappointments",
+        element: (
+          <DoctorRoute>
+            {" "}
+            <PatientAppointment />
+          </DoctorRoute>
+        ),
+      },
 
       // user->private
       {
         path: "myhealth",
-        element: <MyHealth />,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyHealth />
+          </PrivateRoute>
+        ),
       },
       {
         path: "medicine",
-        element: <MedicineList />,
+        element: (
+          <PrivateRoute>
+            <MedicineList />
+          </PrivateRoute>
+        ),
       },
       {
         path: "myappointments",
-        element: <UserAppointments />,
+        element: (
+          <PrivateRoute>
+            <UserAppointments />
+          </PrivateRoute>
+        ),
       },
     ],
   },
