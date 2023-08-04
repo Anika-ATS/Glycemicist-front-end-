@@ -1,13 +1,14 @@
 import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
+import axios from "axios";
+import {useQuery} from "@tanstack/react-query";
 const useAllDoctors = () => {
-  const [AllDoc, setAllDoc] = useState([]);
-  const [isDoctorLoading, setIsDoctorLoading] = useState(true);
-  const [isDoctor, setIsDoctor] = useState(null);
-  const {user} = useContext(AuthContext);
+  const [Doc, setDoc] = useState([]);
+  const [isAllDoctorsLoading, setIsAllDoctorsLoading] = useState(true);
   useEffect(() => {
-    setIsDoctorLoading(true);
-    fetch(`https://glycemist-server.onrender.com/doctors?email=${user?.email}`)
+    setIsAllDoctorsLoading(true);
+    // fetch(`https://glycemist-server.onrender.com/doctors?email=${user?.email}`)
+    fetch(`http://localhost:5000/doctors`)
       .then(response => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -15,18 +16,17 @@ const useAllDoctors = () => {
         return response.json();
       })
       .then(data => {
-        setAllDoc(data.alldoctorsapproved);
-        setIsDoctor(data.isDoctor.doctor);
-        // console.log(AllDoc, data.isDoctor.doctor);
+        console.log("data,", data.data);
+        setDoc(data);
       })
       .catch(error => {
         console.log("Error:", error);
       })
       .finally(() => {
-        setIsDoctorLoading(false);
+        setIsAllDoctorsLoading(false);
       });
   }, []);
-  return {AllDoc, isDoctorLoading, isDoctor};
+  return {Doc, isAllDoctorsLoading};
 };
 
 export default useAllDoctors;

@@ -46,7 +46,7 @@ const DoctorsList = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `${user.name} is an Instructor Now!`,
+            title: `${doc.name} is approved as Doctor!`,
             showConfirmButton: false,
             timer: 1500,
           });

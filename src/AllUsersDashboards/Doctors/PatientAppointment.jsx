@@ -25,10 +25,14 @@ const PatientAppointment = () => {
     };
     fetchHealthData();
   }, []);
+  const handleReport = url => {
+    console.log(url);
+    window.open(url, "_blank");
+  };
   return (
     <div>
       <SectionTitle subHeading={"List of all Patients"}></SectionTitle>
-      {patients.length > 0 ? (
+      {patients !== undefined ? (
         <div className="overflow-x-auto rounded-lg">
           <table className="table md:w-4/5 mx-auto rounded-xl bg-gray-200">
             {/* head */}
@@ -53,6 +57,14 @@ const PatientAppointment = () => {
                   <td className="text-center">{user.patientEmail}</td>
                   <td className="text-center">{user.problems}</td>
                   <td className="text-center">{user.date}</td>
+                  <td className="capitalize text-center">
+                    <button
+                      onClick={() => handleReport(user.fileURL)}
+                      className="btn bg-blue-950 text-white hover:bg-[#235d89]"
+                    >
+                      Report
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

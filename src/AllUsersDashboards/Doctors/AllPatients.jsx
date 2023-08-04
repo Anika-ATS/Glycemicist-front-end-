@@ -48,7 +48,7 @@ const AllPatients = () => {
                 <th></th>
                 <th className="text-center">Patient Name</th>
                 <th className="text-center">Email</th>
-                <th className="text-center">Complains</th>
+                {/* <th className="text-center">Complains</th> */}
 
                 {/* <th className="text-center">View My Report</th> */}
               </tr>
@@ -62,7 +62,7 @@ const AllPatients = () => {
                   <th>{index + 1}</th>
                   <td className="text-center">{user.name}</td>
                   <td className="text-center">{user.patientEmail}</td>
-                  <td className="text-center">{user.problems}</td>
+                  {/* <td className="text-center">{user.problems}</td> */}
                 </tr>
               ))}
             </tbody>

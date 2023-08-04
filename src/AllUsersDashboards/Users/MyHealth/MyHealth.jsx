@@ -12,14 +12,17 @@ import {generateReport} from "./Utilities";
 
 const MyHealth = () => {
   const handleGenerateReportClick = () => {
-    generateReport();
+    generateReport("open");
   };
 
   return (
     <div className="">
-      {/* <button onClick={handleGenerateReportClick} className="btn btn-secondary">
-        Generate PDF
-      </button> */}
+      <button
+        className="btn bg-blue-950  outline-[#64D9B9] hover:bg-[#64D9B9] text-[#64D9B9] hover:text-white float-right mt-0"
+        onClick={handleGenerateReportClick}
+      >
+        Generate Report
+      </button>
       <div className=" mb-96" id="BP">
         <SectionTitle Heading="Regular Blood Pressure Levels" />
         <BP />

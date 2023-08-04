@@ -19,16 +19,14 @@ import {
 } from "react-icons/fa6";
 import {generateReport} from "../AllUsersDashboards/Users/MyHealth/Utilities";
 import useAllDoctors from "../Hooks/useAllDoctors";
+import useDoctor from "../Hooks/useDoctor";
 // import useAdmin from "../Hooks/useAdmin";
 // import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-  const {isAdmin} = useAdmin();
-  const {isDoctor} = useAllDoctors();
-  const handleGenerateReportClick = () => {
-    generateReport("open");
-  };
-
+  const [isAdmin] = useAdmin();
+  const [isDoctor] = useDoctor();
+  console.log(isDoctor);
   return (
     <>
       <Navbar color="bg-[#163750]" liColor="text-[#64D9B9]" />
@@ -55,7 +53,7 @@ const Dashboard = () => {
               <>
                 <li>
                   <NavLink
-                    to="/dashboard/allusers"
+                    to="/dashboard/Allusers"
                     className="text-xl font-normal  text-[#64D9B9] my-5 hover:text-[#97d7e8]"
                   >
                     <FaUsers className="text-2xl text-[#8ccce8] " />
@@ -65,20 +63,20 @@ const Dashboard = () => {
                 <li>
                   {" "}
                   <NavLink
-                    to="/dashboard/doctorslist"
+                    to="/dashboard/Doctorslist"
                     //   [#7bd0f4]
                     className="text-xl font-semibold text-[#64D9B9] my-5 hover:text-[#97d7e8]"
                   >
                     <FaStethoscope className="text-2xl text-[#8ccce8] " />
-                    Approve Doctors
+                    Doctors
                   </NavLink>
                 </li>
               </>
-            ) : isDoctor ? (
+            ) : isDoctor == true ? (
               <>
                 <li>
                   <NavLink
-                    to="/dashboard/allpatients"
+                    to="/dashboard/Allpatients"
                     className="text-xl font-normal  text-[#64D9B9] my-5 hover:text-[#97d7e8]"
                   >
                     <BsPlusCircleFill className="text-2xl text-[#8ccce8]" />
@@ -87,7 +85,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <NavLink
-                    to="/dashboard/allappointments"
+                    to="/dashboard/Allappointments"
                     className="text-xl font-normal  text-[#64D9B9] my-5 hover:text-[#97d7e8]"
                   >
                     <FaStethoscope className="text-2xl text-[#8ccce8]" />
@@ -97,44 +95,40 @@ const Dashboard = () => {
               </>
             ) : (
               <>
-                <li>
-                  {" "}
-                  <NavLink
-                    to="/dashboard/myhealth"
-                    //   [#7bd0f4]
-                    className="text-xl font-semibold text-[#64D9B9] my-5 hover:text-[#97d7e8]"
-                  >
-                    <FaHeartCircleCheck className="text-2xl text-[#8ccce8] " />
-                    My Health
-                  </NavLink>
-                </li>
-                <li>
-                  {" "}
-                  <NavLink
-                    to="/dashboard/medicine"
-                    className="text-xl font-semibold text-[#64D9B9]  my-5 hover:text-[#97d7e8]"
-                  >
-                    <FaBriefcaseMedical className="text-xl  text-[#8ccce8] " />
-                    Medicines
-                  </NavLink>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <NavLink
-                    to="/dashboard/myappointments"
-                    className="text-xl font-semibold text-[#64D9B9]  my-5 hover:text-[#97d7e8]"
-                  >
-                    <BsCalendar2Check className="text-xl  text-[#8ccce8] " />
-                    Appointments
-                  </NavLink>{" "}
-                </li>
-                <hr />
-                <button
-                  className="btn bg-transparent outline-[#64D9B9] hover:bg-[#64D9B9] text-[#64D9B9] hover:text-white w-4/5  mt-5"
-                  onClick={handleGenerateReportClick}
-                >
-                  Generate Report
-                </button>{" "}
+                {/* {!isDoctor && !isAdmin && ( */}
+                <>
+                  <li>
+                    {" "}
+                    <NavLink
+                      to="/dashboard/Myhealth"
+                      className="text-xl font-semibold text-[#64D9B9] my-5 hover:text-[#97d7e8]"
+                    >
+                      <FaHeartCircleCheck className="text-2xl text-[#8ccce8] " />
+                      My Health
+                    </NavLink>
+                  </li>
+                  <li>
+                    {" "}
+                    <NavLink
+                      to="/dashboard/Medicine"
+                      className="text-xl font-semibold text-[#64D9B9]  my-5 hover:text-[#97d7e8]"
+                    >
+                      <FaBriefcaseMedical className="text-xl  text-[#8ccce8] " />
+                      Medicines
+                    </NavLink>{" "}
+                  </li>
+                  <li>
+                    {" "}
+                    <NavLink
+                      to="/dashboard/Myappointments"
+                      className="text-xl font-semibold text-[#64D9B9]  my-5 hover:text-[#97d7e8]"
+                    >
+                      <BsCalendar2Check className="text-xl  text-[#8ccce8] " />
+                      Appointments
+                    </NavLink>{" "}
+                  </li>{" "}
+                </>
+                {/* )} */}
               </>
             )}
           </ul>

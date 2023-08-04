@@ -107,7 +107,7 @@ const BloodSugar = () => {
     bloodSugarData !== undefined
       ? bloodSugarData.map(item => ({
           ...item,
-          date: moment(item.date).format("DD MMM YY"),
+          date: moment(item.date).format("DD MMM YY" || "HH mm A"),
         }))
       : [];
   console.log(formattedBloodSugarData);
@@ -163,7 +163,7 @@ const BloodSugar = () => {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" interval={0} />
-            <YAxis />
+            <YAxis domain={0 - 20} />
             <Tooltip />
             <Legend verticalAlign="top" align="center" fontSize={18} />
             <Line

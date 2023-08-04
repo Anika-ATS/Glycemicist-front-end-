@@ -27,6 +27,12 @@ const UserAppointments = () => {
     };
     fetchHealthData();
   }, []);
+
+  const handleReport = url => {
+    console.log(url);
+    window.open(url, "_blank");
+  };
+
   return (
     <div>
       <SectionTitle subHeading={"My Scheduled Appointments"}></SectionTitle>
@@ -56,48 +62,20 @@ const UserAppointments = () => {
                   <td className="text-center">{user.date}</td>
                   <td className="text-center">{user.problems}</td>
                   <td className="capitalize text-center">
-                    <button>Report</button>
-                  </td>
-
-                  {/* <td>
-                <button
-                  className="btn btn-ghost bg-orange-300  text-white me-3 hover:bg-orange-400 "
-                  onClick={() => handleAdmin(user)}
-                  // disabled={user?.clicked === true ? true : false}
-                  disabled={
-                    user?.clicked === true && user?.role === "admin"
-                      ? true
-                      : false
-                  }
-                >
-                  Admin
-                </button>
-                <button
-                  className="btn btn-ghost bg-teal-400  text-white md:me-2 mt-2 hover:bg-teal-600"
-                  // disabled={isAdmindisable}
-                  onClick={() => handleInstructor(user)}
-                  disabled={
-                    user?.clicked === true && user?.role === "instructor"
-                      ? true
-                      : false
-                  }
-                  // disabled={user?.clicked === true ? true : false}
-                >
-                  Instructor
-                </button>
-              </td> */}
-                  {/* <td className="text-center">
-                    <button className="bg-gray-800 text-white btn-sm rounded-md text-center">
-                      Approve as Doctor
+                    <button
+                      onClick={() => handleReport(user.fileURL)}
+                      className="btn bg-blue-950 text-white hover:bg-[#235d89]"
+                    >
+                      Report
                     </button>
-                  </td> */}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       ) : (
-        <h1>No Appointments</h1>
+        <h1 className="text-center font-semibold text-2xl">No Appointments</h1>
       )}
     </div>
   );

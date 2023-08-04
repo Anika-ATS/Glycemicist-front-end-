@@ -12,10 +12,11 @@ import {
 } from "firebase/storage";
 import {storage} from "../../../firebase/firebase.config";
 import Swal from "sweetalert2";
+import {Link} from "react-router-dom";
 // import {storage} from "../firebase/firebase.config";
 
 const Appointment = () => {
-  const {AllDoc} = useDoctors();
+  const {Doc} = useDoctors();
   // console.log(AllDoc);
   const staticId = "my-static-id";
   const {
@@ -101,7 +102,7 @@ const Appointment = () => {
                 from-[#64d9b9] to-[#1d2939] "
           >
             <h1 className="mt-3 px-2 shadow-2xl group-hover:text-white text-2xl mx-auto text-[#64d9b9] ">
-              Appointment Form
+              Book Your Appointment
             </h1>
             <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
               <div className="form-control">
@@ -187,7 +188,7 @@ const Appointment = () => {
                         Please select a Doctor
                       </option>
 
-                      {AllDoc.map(item => (
+                      {Doc.map(item => (
                         <option
                           className="py-3 rounded-md"
                           key={item.email}

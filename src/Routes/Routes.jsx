@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
       {
         path: "/appointment",
         element: (
-          <PrivateRoute>
+          <PrivateRoute message="to book an Appointment">
             <Appointment></Appointment>
           </PrivateRoute>
         ),
@@ -64,53 +64,54 @@ export const router = createBrowserRouter([
   {
     path: "dashboard",
     element: (
-      <PrivateRoute>
+      <PrivateRoute message="to use the dashboard facilities">
         <Dashboard />
       </PrivateRoute>
     ),
     children: [
       {
         // admin
-        path: "allusers",
+        path: "Allusers",
         element: (
-          <AdminRoute>
-            <AllUsers />
-          </AdminRoute>
+          // <AdminRoute>
+          <AllUsers />
+          // </AdminRoute>
         ),
       },
       {
         // admin
-        path: "doctorslist",
+        path: "Doctorslist",
         element: (
           <AdminRoute>
-            {" "}
-            <DoctorsList />{" "}
+            <DoctorsList />
           </AdminRoute>
         ),
       },
 
       // doctor
       {
-        path: "allpatients",
+        path: "Allpatients",
         element: (
           <DoctorRoute>
+            {" "}
             <AllPatients />
           </DoctorRoute>
         ),
       },
       {
-        path: "allappointments",
+        path: "Allappointments",
         element: (
-          <DoctorRoute>
-            {" "}
-            <PatientAppointment />
-          </DoctorRoute>
+          // // <DoctorRoute>
+          //   {" "}
+          //  <PatientAppointment>
+          // // </DoctorRoute>
+          <PatientAppointment></PatientAppointment>
         ),
       },
 
       // user->private
       {
-        path: "myhealth",
+        path: "Myhealth",
         element: (
           <PrivateRoute>
             {" "}
@@ -119,7 +120,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "medicine",
+        path: "Medicine",
         element: (
           <PrivateRoute>
             <MedicineList />
@@ -127,7 +128,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "myappointments",
+        path: "Myappointments",
         element: (
           <PrivateRoute>
             <UserAppointments />
@@ -136,4 +137,33 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
+  // {
+  //   path: "DoctorDashboard",
+  //   element: (
+  //     <DoctorRoute>
+  //       <DoctorDashboard />
+  //     </DoctorRoute>
+  //   ),
+  //   children: [
+  //     //  doctor
+  //     {
+  //       path: "Allpatients",
+  //       element: (
+  //         <DoctorRoute>
+  //           <AllPatients />
+  //         </DoctorRoute>
+  //       ),
+  //     },
+  //     {
+  //       path: "Allappointments",
+  //       element: (
+  //         <DoctorRoute>
+  //           {" "}
+  //           <PatientAppointment />
+  //         </DoctorRoute>
+  //       ),
+  //     },
+  //   ],
+  // },
 ]);

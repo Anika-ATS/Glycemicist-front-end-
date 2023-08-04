@@ -9,12 +9,16 @@ import Ste from "../../../assets/lotti/animation_lkl6wh91.json";
 // import p1 from '../../../assets/Images/B-D1.jpg';
 import pic from "../../../assets/Images/Newsheadlessdoc.jpg";
 import {Link} from "react-router-dom";
+import useAllDoctors from "../../../Hooks/useAllDoctors";
+import useAdmin from "../../../Hooks/useAdmin";
 // import Appointment from "../Appointment/Appointment";
 // import { MdHeight } from "react-icons/md";
 // import p2 from '../../../assets/Images/B---2.jpeg';s
 
 // import '../Banner/Banner.css';
 const Banner = () => {
+  const {isDoctor} = useAllDoctors();
+  const {isAdmin} = useAdmin();
   return (
     <Carousel>
       <div>
@@ -51,11 +55,13 @@ const Banner = () => {
 
             {/* button 64d9b9 */}
 
-            <Link to="/appointment">
-              <button className="group badge text-2xl bg-[#64d9b9]  outline  outline-[#1d2939] toast toast-start h-[60px]  w-4/12 mb-24 mx-60 hover:text-white animate-pulse hover:bg-[#1d2939]">
-                <div>Book your appointment now</div>
-              </button>
-            </Link>
+            {!isAdmin && (
+              <Link to="/appointment">
+                <button className="group badge text-2xl bg-[#64d9b9]  outline  outline-[#1d2939] toast toast-start h-[60px]  w-4/12 mb-24 mx-60 hover:text-white animate-pulse hover:bg-[#1d2939]">
+                  <div>Book your appointment now</div>
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

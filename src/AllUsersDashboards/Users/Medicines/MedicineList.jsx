@@ -47,34 +47,44 @@ const MedicineList = () => {
       console.error("Error storing token in the database:", error);
     }
   };
-  useEffect(() => {
-    function requestPermission() {
-      console.log("Requesting permission...");
-      Notification.requestPermission().then(permission => {
-        if (permission === "granted") {
-          Swal.fire("Now you will receive daily medicine notification");
-          getToken(messaging, {vapidKey: import.meta.env.VITE_vapid_key}).then(
-            token => {
-              console.log("token: ", token);
-              storeTokenInDB(token);
-            }
-          );
-        } else {
-          Swal.fire("You denied notification permission");
+
+  const handleNotifications = () => {
+    async function requestPermission() {
+      const permission = await Notification.requestPermission();
+      if (permission === "granted") {
+        // store the token
+        const token = getToken(messaging, {
+          vapidKey:
+            "BGCKRIyddq8J3MhKSj6Mat9CJFBSIclA91UHjVuc4nLZfleF-Ibs8x4Yq8iHaT2JbfBAxufZeB96rdHOqaf2tQ0",
+        });
+        if (token) {
+          console.log("token", token);
+          storeTokenInDB(token);
+          Swal.fire("Now you will receive medicine alerts!");
         }
-      });
+      } else if (permission === "denied") {
+        Swal.fire("You denied medicine alerts!");
+      } else {
+        console.log(permission);
+      }
     }
     requestPermission();
-  }, []);
+  };
   return (
     <>
       <AddMedicine />
-      MedicineList
+
+      <button
+        className="btn btn-sm float-right btn-outline outline-blue-950"
+        onClick={handleNotifications}
+      >
+        Send Medicine Alerts
+      </button>
       <div>
         <SectionTitle subHeading={"List of all Medicine"}></SectionTitle>
         {med !== undefined ? (
-          <div className="overflow-x-auto rounded-lg">
-            <table className="table md:w-4/5 mx-auto rounded-xl bg-gray-200">
+          <div className="overflow-x-auto rounded-lg mb-20">
+            <table className="table md:w-4/5 mx-auto rounded-xl bg-gray-200 mb-20">
               {/* head*/}
               <thead>
                 <tr className=" text-lg  text-gray-700 rounded-lg">
@@ -105,7 +115,9 @@ const MedicineList = () => {
             </table>
           </div>
         ) : (
-          <h1>No Appointments</h1>
+          <h1 className="text-center font-semibold text-2xl">
+            No Medicines added yet
+          </h1>
         )}{" "}
       </div>
     </>

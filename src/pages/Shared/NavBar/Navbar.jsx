@@ -5,12 +5,14 @@ import {useContext} from "react";
 import useAdmin from "../../../Hooks/useAdmin";
 import {generateReport} from "../../../AllUsersDashboards/Users/MyHealth/Utilities";
 import useAllDoctors from "../../../Hooks/useAllDoctors";
+import {FaUser} from "react-icons/fa";
+import useDoctor from "../../../Hooks/useDoctor";
 
 const Navbar = props => {
   const {user, logOut} = useContext(AuthContext);
-  const {isAdmin} = useAdmin();
-  const {isDoctor} = useAllDoctors();
-  console.log(isAdmin);
+  const [isAdmin] = useAdmin();
+  const [isDoctor] = useDoctor();
+  console.log(isDoctor);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -25,14 +27,19 @@ const Navbar = props => {
           Home
         </Link>
       </li>
+      {/* {isDoctor && (
+        <li>
+          <Link to="/DoctorDashboard/AllPatients">Dashboard</Link>
+        </li>
+      )} */}
       <li>
         <Link
           to={
             isAdmin
-              ? "/dashboard/allusers"
+              ? "/dashboard/Allusers"
               : isDoctor
-              ? "/dashboard/allpatients"
-              : "/dashboard/myhealth"
+              ? "/dashboard/Allpatients"
+              : "/dashboard/Myhealth"
           }
           className={`${props.liColor} text-lg font-semibold`}
         >
@@ -90,8 +97,8 @@ const Navbar = props => {
           </label>
           <label tabIndex={0} className=" avatar">
             <div
-              className="mx-3 rounded-full"
-              style={{height: "70px", width: "170px"}}
+              className="mx-3 rounded-full w-1/5"
+              // style={{height: "70px", width: "170px"}}
             >
               <img src={logo} />
             </div>
@@ -102,9 +109,6 @@ const Navbar = props => {
           >
             {NavItems}
           </ul>
-          <label>
-            <h1 className="text-blue-800">{user && user.displayName}</h1>
-          </label>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -113,12 +117,23 @@ const Navbar = props => {
 
       <div className="navbar-end">
         {user ? (
-          <button
-            className=" btn btn-white text-white bg-[#64d9b9]  h-[50px] w-[120px] rounded-full font-bold outline outline-[#1d2939] me-1 hover:bg-[#1d2939]"
-            onClick={handleLogOut}
-          >
-            Logout
-          </button>
+          <>
+            <div
+              className="tooltip text-white mx-2  hover:text-blue-950 tooltip-left"
+              data-tip={user.displayName}
+            >
+              <button className="btn btn-circle bg-blue-950 hover:text-blue-950">
+                <FaUser className="text-white  hover:text-blue-950" />
+              </button>
+            </div>
+
+            <button
+              className=" btn btn-white text-white bg-[#64d9b9]  h-[50px] w-[120px] rounded-full font-bold outline outline-[#1d2939] me-1 hover:bg-[#1d2939]"
+              onClick={handleLogOut}
+            >
+              Logout
+            </button>
+          </>
         ) : (
           <>
             <Link to="/login">
