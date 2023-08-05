@@ -76,7 +76,7 @@ const BloodSugar = () => {
   const fetchHealthData = async () => {
     try {
       const response = await fetch(
-        `https://glycemist-server.onrender.com/myhealth/${user?.email}`
+        `http://localhost:5000/myhealth/${user?.email}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -114,7 +114,7 @@ const BloodSugar = () => {
   const onSubmit = data => {
     console.log(data);
     console.log(
-      `https://glycemist-server.onrender.com/patient/${user?.email}`,
+      `http://localhost:5000/patient/${user?.email}`,
       `http://localhost:5000/patient/${user?.email}`
     );
     axios

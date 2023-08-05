@@ -3,35 +3,34 @@ import logo from "../../../assets/Images/logo2-removebg-preview.png";
 import {AuthContext} from "../../../Providers/AuthProvider";
 import {useContext} from "react";
 import useAdmin from "../../../Hooks/useAdmin";
-import {generateReport} from "../../../AllUsersDashboards/Users/MyHealth/Utilities";
-import useAllDoctors from "../../../Hooks/useAllDoctors";
-import {FaUser} from "react-icons/fa";
+
 import useDoctor from "../../../Hooks/useDoctor";
+import UserProfile from "../../../Components/UserProfile";
 
 const Navbar = props => {
+  console.log(props.liColor);
   const {user, logOut} = useContext(AuthContext);
   const [isAdmin] = useAdmin();
   const [isDoctor] = useDoctor();
-  console.log(isDoctor);
+  // console.log(isDoctor);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch(error => console.log(error));
   };
 
-  console.log(user);
+  // console.log(user);
   const NavItems = (
     <>
       <li>
-        <Link to="/" className={`${props.liColor} text-lg font-semibold`}>
+        <Link
+          to="/"
+          className={`${props.liColor} text-lg font-semibold hover:${props.hover} hover:bg-transparent`}
+        >
           Home
         </Link>
       </li>
-      {/* {isDoctor && (
-        <li>
-          <Link to="/DoctorDashboard/AllPatients">Dashboard</Link>
-        </li>
-      )} */}
+
       <li>
         <Link
           to={
@@ -41,14 +40,17 @@ const Navbar = props => {
               ? "/dashboard/Allpatients"
               : "/dashboard/Myhealth"
           }
-          className={`${props.liColor} text-lg font-semibold`}
+          className={`${props.liColor} text-lg font-semibold hover:${props.hover} hover:bg-transparent`}
         >
+          {" "}
           Dashboard
         </Link>
       </li>
       <li>
         <Link to="/allDoctors">
-          <span className={`${props.liColor} text-lg font-semibold`}>
+          <span
+            className={`${props.liColor} text-lg font-semibold hover:${props.hover} hover:bg-transparent`}
+          >
             Doctors
           </span>{" "}
         </Link>
@@ -56,22 +58,26 @@ const Navbar = props => {
 
       <li>
         <Link to="/prediction">
-          <span className={`${props.liColor} text-lg font-semibold`}>
-            Diabetis Prediction
+          <span
+            className={`${props.liColor} text-lg font-semibold hover:${props.hover} hover:bg-transparent`}
+          >
+            Diabetes Prediction
           </span>{" "}
         </Link>
       </li>
       {/* diagonostic  */}
       <li>
         <Link to="/diagnostic">
-          <span className={`${props.liColor} text-lg font-semibold`}>
+          <span
+            className={`${props.liColor} text-lg font-semibold hover:${props.hover} hover:bg-transparent`}
+          >
             Diagnostic Corner
           </span>{" "}
         </Link>
       </li>
     </>
   );
-  // fixed z-10  bg-opacity-50 text-white  mx-auto
+
   return (
     <div className={`navbar  ${props.color}`}>
       <div className="navbar-start">
@@ -95,14 +101,15 @@ const Navbar = props => {
               />
             </svg>
           </label>
-          <label tabIndex={0} className=" avatar">
-            <div
-              className="mx-3 rounded-full w-1/5"
-              // style={{height: "70px", width: "170px"}}
-            >
-              <img src={logo} />
+          <label tabIndex={0} className="avatar">
+            <div className="lg:ml-3  md:w-1/12 w-[16%]  ml-5">
+              <img src="/glucosemeter.png" />
             </div>
+            <p className={`text-sm  font-bold mt-4 ${props.log}`}>
+              Glycemicist
+            </p>
           </label>
+
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
@@ -118,17 +125,30 @@ const Navbar = props => {
       <div className="navbar-end">
         {user ? (
           <>
-            <div
-              className="tooltip text-white mx-2  hover:text-blue-950 tooltip-left"
-              data-tip={user.displayName}
-            >
-              <button className="btn btn-circle bg-blue-950 hover:text-blue-950">
-                <FaUser className="text-white  hover:text-blue-950" />
-              </button>
+            <div className="dropdown dropdown-left dropdown-bottom">
+              {/* <label tabIndex={0} className="btn m-1"></label> */}
+              <div
+                className="tooltip text-white   hover:text-blue-950 tooltip-left"
+                tabIndex={0}
+                data-tip={user.displayName}
+              >
+                <div className="avatar online">
+                  <div className="w-12  mask mask-squircle">
+                    <img src={user.photoURL} />
+                  </div>
+                </div>
+              </div>
+
+              <div
+                tabIndex={0}
+                className="dropdown-content z-[1] card card-compact w-72 p-2 shadow bg-blue-950 text-slate-100"
+              >
+                <UserProfile />
+              </div>
             </div>
 
             <button
-              className=" btn btn-white text-white bg-[#64d9b9]  h-[50px] w-[120px] rounded-full font-bold outline outline-[#1d2939] me-1 hover:bg-[#1d2939]"
+              className="ms-2 btn btn-white text-white bg-[#64d9b9]  h-[50px] w-[120px] rounded-full font-bold outline outline-[#1d2939] me-1 hover:bg-[#1d2939]"
               onClick={handleLogOut}
             >
               Logout
@@ -137,7 +157,7 @@ const Navbar = props => {
         ) : (
           <>
             <Link to="/login">
-              <span className=" btn btn-white text-white bg-[#64d9b9]  h-[50px] w-[120px] rounded-full font-bold outline outline-[#1d2939] me-1 hover:bg-[#1d2939]">
+              <span className=" btn btn-white text-white bg-[#64d9b9]  h-[50px] w-[120px] me-3 rounded-full font-bold outline outline-[#1d2939]  hover:bg-[#1d2939]">
                 Login
               </span>
             </Link>

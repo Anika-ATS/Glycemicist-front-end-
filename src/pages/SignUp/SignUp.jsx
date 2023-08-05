@@ -6,8 +6,10 @@ import {AuthContext} from "../../Providers/AuthProvider";
 import {sendEmailVerification} from "firebase/auth";
 import Swal from "sweetalert2";
 import axios from "axios";
-import GetDownloadUrl from "./GetDownloadUrl";
+import GetDownloadUrl from "./GetDownload";
 import {useState} from "react";
+import ProgressBar from "@ramonak/react-progress-bar";
+import GetDownload from "./GetDownload";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -29,22 +31,20 @@ const SignUp = () => {
   } = useForm();
   const passwordValue = watch("password", "");
   const selectedCategory = watch("category");
-  console.log(selectedCategory);
-  const [progress, setP] = useState();
+  // console.log(selectedCategory);
+  const [p, setP] = useState();
   const onSubmit = async data => {
     console.log(data);
-    // console.log("category", data.category);
-    // condition
-    // const role = category === "doctor" ? "doctor" : "user";
+
     const file = data.image[0];
     const {downloadURL, progress} = await GetDownloadUrl(file);
-    setP(progress);
+    // setP(progress);
     let url;
     if (downloadURL) {
       console.log("Download link: ", downloadURL);
       url = downloadURL;
     }
-    console.log("Upload progress: ", progress);
+    console.log("Upload progress: ", p);
     let newUser;
     createUser(data.email, data.password)
       .then(result => {
@@ -56,7 +56,7 @@ const SignUp = () => {
             newUser = {
               name: data.name,
               email: data.email,
-              image: data.photo,
+              image: url,
               role: data.category,
               status: "pending",
               affiliation: data.Designation,
@@ -66,7 +66,7 @@ const SignUp = () => {
             newUser = {
               name: data.name,
               email: data.email,
-              image: data.photo,
+              image: url,
               role: data.category,
               status: "pending",
               bloodPressure: [],
@@ -77,7 +77,7 @@ const SignUp = () => {
           }
 
           axios
-            .post("https://glycemist-server.onrender.com/users", newUser)
+            .post("http://localhost:5000/users", newUser)
 
             .then(response => {
               console.log(response);
@@ -91,6 +91,7 @@ const SignUp = () => {
                   timer: 1500,
                 });
                 // navigate("/");
+                reset();
               }
             })
             .catch(error => {
@@ -99,14 +100,14 @@ const SignUp = () => {
         });
 
         // Email verification sent!
-        // sendVerificationalEmail(result.user);
-        // Swal.fire("Signed Up successfully!");
-        // reset();
-        // logOut()
-        //   .then(() => {
-        //     navigate(from, {replace: true});
-        //   })
-        //   .catch(error => console.log(error));
+        sendVerificationalEmail(result.user);
+        Swal.fire("Signed Up successfully!");
+        reset();
+        logOut()
+          .then(() => {
+            navigate(from, {replace: true});
+          })
+          .catch(error => console.log(error));
       }) //end
       .catch(error => {
         console.log(error);
@@ -143,9 +144,6 @@ const SignUp = () => {
       setValue("yourformdesignation", "");
     }
   };
-
-  // const selectedCategory = watch("category");
-  // console.log(selectedCategory);
 
   return (
     <div className=" hero min-h-screen bg-base-200">
@@ -258,10 +256,20 @@ const SignUp = () => {
             <div className="form-control">
               <input
                 type="email"
-                {...register("email", {required: true})}
-                placeholder="email"
                 name="email"
-                className="input input-bordered"
+                {...register(
+                  "email",
+
+                  {
+                    required: true,
+                    pattern: {
+                      value: /^[a-z0-9]+@[a-z]*gmail.com$/,
+                      message: "Invalid email address ",
+                    },
+                  }
+                )}
+                placeholder="email"
+                className="input input-bordered mt-2"
               />
               {errors.email && (
                 <span className="text-red-600">This field is required</span>
@@ -297,10 +305,6 @@ const SignUp = () => {
                   and one small letter{" "}
                 </p>
               )}
-
-              {/* <label className="label">
-                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                        </label> */}
             </div>
 
             {/* Confirmpassword */}
@@ -309,38 +313,26 @@ const SignUp = () => {
                 type="password"
                 {...register("Confirmpassword", {
                   required: true,
+                  validate: value =>
+                    value === passwordValue || "Passwords do not match",
+
                   minLength: 6,
                   maxLength: 10,
                 })}
                 placeholder="Confirmpassword"
                 name="Confirmpassword"
-                className="input input-bordered"
+                className="input input-bordered mt-2"
               />
               {errors.Confirmpassword && (
-                <span className="text-red-600">This field is required</span>
+                <span className="text-red-600">Password does not match</span>
               )}
             </div>
 
-            {/* photourl */}
-            {/* <div className="form-control">
-              <input
-                type="url"
-                {...register("photo", {required: true})}
-                placeholder="Photo"
-                name="photo"
-                className="input input-bordered"
-              />
-              {errors.photo && (
-                <span className="text-red-600">This field is required</span>
-              )}
-            </div> */}
             <div className="form-control">
               <label
                 htmlFor="fileInput"
                 className="text-teal-700 text-lg font-semibold group-hover:text-white"
-              >
-                Download and attach medical history report for doctor.
-              </label>
+              ></label>
               <input
                 type="file"
                 {...register("image", {
@@ -349,26 +341,11 @@ const SignUp = () => {
                 id="fileInput"
                 name="image"
                 className="input input-bordered py-3 w-full "
-                accept=".png .JPEG .jpg"
               />
               {errors.file && (
                 <span className="text-red-600">{errors.file.message}</span>
               )}
             </div>
-
-            {/* <div className="form-control">
-              <input
-                type="file"
-                {...register("photo", { required: true })}
-                placeholder="Photo"
-                name="photo"
-                className="mt-2 py-2 input input-bordered"
-              />
-              {errors.photo && (
-                <span className="text-red-600">This field is required</span>
-              )}
-            </div> */}
-            {/* height */}
 
             <div className="form-control mt-6">
               <input

@@ -1,31 +1,44 @@
 [
-    {  
-       "_id":"1",
-       "token":"A",
-      "test_name": "Fasting Blood Sugar",
-      "price": "600 BDT",
-      "system":"Pay First"
-    },
-    {  
-      "_id":"2",
-      "token":"B",
-      "test_name": "Oral Glucose Tolerance Test (OGTT)",
-      "price": "800 BDT",
-      "system":"Pay First"
-    },
-    {
-        "_id":"3",
-        "token":"C",
-       "test_name": "Hemoglobin A1c (HbA1c)",
-      "price": "500 BDT",
-      "system":"Pay First"
-    },
-    {
-        "_id":"4",
-        "token":"D",
-      "test_name": "Random Blood Sugar",
-      "price": "550 BDT",
-      "system":"Pay First"
-    }
-  ]
-
+  {
+    "_id": "1",
+    "test_name": "Fasting Plasma Glucose (FPG) Test",
+    "test_picture": "https://img.freepik.com/premium-photo/blood-samples-plasma-glucose-fasting-fgp-test-fasting-blood-sugarfbs-diagnosis-hypergly_196584-132.jpg",
+    "price": " 280.00 BDT ",
+    "location": "Bangladesh"
+  },
+  {
+    "_id": "2",
+    "test_name": "Random Blood Sugar (RBS) Test",
+    "test_picture": "https://vinmec-prod.s3.amazonaws.com/images/20201222_155917_740281_Chi_so_duong_huyet.max-1800x1800.jpg",
+    "price": "270.00  BDT",
+    "location": "Bangladesh"
+  },
+  {
+    "_id": "3",
+    "test_name": "Oral Glucose Tolerance Test (OGTT)",
+    "test_picture": "https://www.breathewellbeing.in/blog/wp-content/uploads/2021/04/OGtt-Test-1.jpeg",
+    "price": "200.00  BDT",
+    "location": "Bangladesh"
+  },
+  {
+    "_id": "4",
+    "test_name": "Glycated Hemoglobin (HbA1c) Test",
+    "test_picture": "https://www.metropolisindia.com/blog/wp-content/uploads/2020/12/hba1c-checkup-importance-Metropolis-Healthcare.jpg",
+    "price": "390.00  BDT",
+    "location": "Bangladesh"
+  },
+  {
+    "_id": "5",
+    "test_name": "Postprandial Blood Sugar (PPBS) Test",
+    "test_picture": "https://uploads-ssl.webflow.com/61a0875915332c1fd8109f03/6305f9d7924c2745a3ce89be_postprandial-blood-glucose.jpg",
+    "price": "120.00  BDT",
+    "location": "Bangladesh"
+  },
+  {
+    "_id": "6",
+    "test_name": "Lipid Profile Test",
+    "test_picture": "https://d1oz8c8oleklo9.cloudfront.net/2021/12/menopause--28-.webp",
+    "price": "230.00  BDT",
+    "location": "Bangladesh"
+  }
+]

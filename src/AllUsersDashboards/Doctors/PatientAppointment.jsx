@@ -34,15 +34,19 @@ const PatientAppointment = () => {
       <SectionTitle subHeading={"List of all Patients"}></SectionTitle>
       {patients !== undefined ? (
         <div className="overflow-x-auto rounded-lg">
-          <table className="table md:w-4/5 mx-auto rounded-xl bg-gray-200">
+          <table className="table md:w-4/5 mx-auto rounded-xl bg-white">
             {/* head */}
-            <thead>
+            <thead className="bg-gray-200">
               <tr className=" text-lg  text-gray-700 rounded-lg">
                 <th></th>
                 <th className="text-center">Patient Name</th>
                 <th className="text-center">Email</th>
                 <th className="text-center">Complains</th>
+                <th className="text-center">
+                  Diabetes <br /> Risk
+                </th>
                 <th className="text-center">Date</th>
+                <th className="text-center">Reports</th>
                 {/* <th className="text-center">View My Report</th> */}
               </tr>
             </thead>
@@ -56,15 +60,32 @@ const PatientAppointment = () => {
                   <td className="text-center">{user.name}</td>
                   <td className="text-center">{user.patientEmail}</td>
                   <td className="text-center">{user.problems}</td>
+
+                  {user.risk ? (
+                    <td className="text-center">{user.risk}</td>
+                  ) : (
+                    <td></td>
+                  )}
                   <td className="text-center">{user.date}</td>
-                  <td className="capitalize text-center">
+                  <td className="capitalize text-center flex space-x-2">
                     <button
                       onClick={() => handleReport(user.fileURL)}
-                      className="btn bg-blue-950 text-white hover:bg-[#235d89]"
+                      className="btn btn-sm bg-blue-950 text-white hover:bg-[#235d89]"
                     >
                       Report
                     </button>
+
+                    {user.medicineReport && (
+                      <button
+                        onClick={() => handleReport(user.medicineReport)}
+                        className="btn btn-sm bg-blue-950 text-white hover:bg-[#235d89]"
+                      >
+                        Medicines
+                      </button>
+                    )}
                   </td>
+
+                  {/* <td className="capitalize text-center"></td> */}
                 </tr>
               ))}
             </tbody>

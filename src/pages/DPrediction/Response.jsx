@@ -8,6 +8,7 @@ import {useContext} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
+import {FaHeart} from "react-icons/fa";
 
 const Response = ({res}) => {
   console.log(res);
@@ -19,7 +20,9 @@ const Response = ({res}) => {
       return;
     }
     axios
-      .patch(`http://localhost:5000/save-risk/${user?.email}`, {value: res})
+      .patch(`http://localhost:5000/save-risk/${user?.email}`, {
+        value: res,
+      })
       .then(response => {
         if (response.data.modifiedCount) {
           Swal.fire({
@@ -46,9 +49,15 @@ const Response = ({res}) => {
           </h1>
           <h2 className="mt-5 text-center text-lg text-[#1d2939] font-mono font-medium">
             Diabetic Prediction Result:{" "}
-            <span className="text-green-400 font-semibold">No Risk</span> <br />
+            <span className="text-green-400 font-semibold w-">No Risk</span>{" "}
+            <br />
           </h2>
-          <Player src={nonDia} className="player w-1/3 m-0 p-0" loop autoplay />
+          <Player
+            src={nonDia}
+            className="player w-1/3  m-0 p-0"
+            loop
+            autoplay
+          />
         </>
       ) : res === 1 ? (
         <>

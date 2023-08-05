@@ -9,7 +9,7 @@ import useDoctor from "../Hooks/useDoctor";
 const DoctorRoute = ({children}) => {
   const {user, loading} = useContext(AuthContext);
 
-  const [isDoctor] = useDoctor();
+  const [isDoctor, isDoctorLoading] = useDoctor();
   console.log("isDoctor from doctor route", isDoctor);
   const location = useLocation();
 
@@ -21,7 +21,7 @@ const DoctorRoute = ({children}) => {
 
   if (user && isDoctor) {
     return children;
-  } else if (!isDoctor) {
+  } else if (!isDoctor && !loading) {
     return <Navigate to="/" state={{from: location}} replace></Navigate>;
   }
 };

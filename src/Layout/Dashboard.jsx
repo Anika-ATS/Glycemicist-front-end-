@@ -20,16 +20,24 @@ import {
 import {generateReport} from "../AllUsersDashboards/Users/MyHealth/Utilities";
 import useAllDoctors from "../Hooks/useAllDoctors";
 import useDoctor from "../Hooks/useDoctor";
+import {useContext} from "react";
+import {AuthContext} from "../Providers/AuthProvider";
 // import useAdmin from "../Hooks/useAdmin";
 // import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
   const [isDoctor] = useDoctor();
+  const {user} = useContext(AuthContext);
   console.log(isDoctor);
   return (
     <>
-      <Navbar color="bg-[#163750]" liColor="text-[#64D9B9]" />
+      <Navbar
+        color="bg-[#163750]"
+        liColor="text-[#64D9B9]"
+        log="text-[#a4daf1]"
+        hover="text-blue-300"
+      />
       <div className="drawer lg:drawer-open bg-gray-100">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content grid gap-10 md:grid-cols-4  justify-center bg-gray-100">
@@ -67,7 +75,7 @@ const Dashboard = () => {
                     //   [#7bd0f4]
                     className="text-xl font-semibold text-[#64D9B9] my-5 hover:text-[#97d7e8]"
                   >
-                    <FaStethoscope className="text-2xl text-[#8ccce8] " />
+                    <FaStethoscope className="text-2xl text-[#93cce4] " />
                     Doctors
                   </NavLink>
                 </li>
@@ -95,7 +103,8 @@ const Dashboard = () => {
               </>
             ) : (
               <>
-                {/* {!isDoctor && !isAdmin && ( */}
+                {/* {!isDoctor ||
+                  (!isAdmin && ( */}
                 <>
                   <li>
                     {" "}
@@ -128,7 +137,7 @@ const Dashboard = () => {
                     </NavLink>{" "}
                   </li>{" "}
                 </>
-                {/* )} */}
+                {/* ))} */}
               </>
             )}
           </ul>

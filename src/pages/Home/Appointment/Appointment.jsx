@@ -13,6 +13,7 @@ import {
 import {storage} from "../../../firebase/firebase.config";
 import Swal from "sweetalert2";
 import {Link} from "react-router-dom";
+import {generatePDFAndUpload} from "./GetMedicines";
 // import {storage} from "../firebase/firebase.config";
 
 const Appointment = () => {
@@ -46,6 +47,12 @@ const Appointment = () => {
       await uploadTask;
 
       const downloadURL = await getDownloadURL(storageRef);
+      const medicineReportURL = await generatePDFAndUpload(data.patientEmail);
+      let url;
+      if (medicineReportURL) {
+        console.log("Download link: ", downloadURL);
+        url = medicineReportURL;
+      }
       console.log("Download URL:", downloadURL);
       const formData = {
         name: data.name,
@@ -57,6 +64,7 @@ const Appointment = () => {
         problems: data.problems,
         date: data.date,
         fileURL: downloadURL,
+        medicineReport: url,
       };
       // Send the form data to the server (MongoDB)
 
@@ -72,7 +80,7 @@ const Appointment = () => {
               showConfirmButton: false,
               timer: 1500,
             });
-            reset();
+            // reset();
           }
         })
         .catch(error => {

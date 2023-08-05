@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {AuthContext} from "../../../Providers/AuthProvider";
+// import {AuthContext} from "../../Providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -8,6 +8,7 @@ import {FaCalendarTimes} from "react-icons/fa";
 import {BsTrash3Fill} from "react-icons/bs";
 import {MdAddCard} from "react-icons/md";
 import {MdAlarmAdd} from "react-icons/md";
+import {AuthContext} from "../../../Providers/AuthProvider";
 const AddMedicine = () => {
   const {user} = useContext(AuthContext);
   const [med, setMed] = useState([]);
@@ -105,90 +106,100 @@ const AddMedicine = () => {
   };
 
   return (
-    <div className="mt-5 mb-5  d-flex justify-content-center mx-auto card shadow-lg w-1/2 bg-base-200 group  border border-[#1d2939] ">
-      <form onSubmit={handleSubmit} className="w-full mx-auto mb-5">
+    <div className=" mb-5  d-flex justify-content-center mx-auto card shadow-lg  bg-base-200 group  border border-[#1d2939] ">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full mx-auto mb-5 justify-center"
+      >
         {medicines.map((medicine, medicineIndex) => (
           <div
             key={medicineIndex}
-            className="mx-auto rounded-md border  p-2 my-1 "
+            className="mx-auto rounded-md border  p-2 my-1  "
           >
-            <input
-              type="text"
-              placeholder="Medicine Name"
-              className="mt-3 h-[30px] mx-5 w-10/12  mb-3 text-black border border-[#1d2939]"
-              value={medicine.medicine_name}
-              onChange={e => handleMedicineChange(e, medicineIndex)}
-            />
+            <div className="flex flex-row justify-around  items-center">
+              <label className="font-medium text-md">Medicine Name</label>
+              <input
+                type="text"
+                placeholder="Medicine Name"
+                className="p-1  rounded-md mt-3 h-[30px] w-3/5 mb-3 text-black border border-[#1d2939]"
+                value={medicine.medicine_name}
+                onChange={e => handleMedicineChange(e, medicineIndex)}
+              />
+            </div>
+
             {medicine.times.map((time, timeIndex) => (
               <div key={timeIndex}>
-                <input
-                  type="time"
-                  placeholder="Time"
-                  className="mt-3 h-[30px] mx-5 w-7/12  mb-3 text-black border border-[#1d2939] flex-none"
-                  value={time}
-                  onChange={e => handleTimeChange(e, medicineIndex, timeIndex)}
-                />
-                <button
-                  type="button"
-                  onClick={() => handleRemoveNewTime(medicineIndex, timeIndex)}
-                  className="btn btn-sm  btn-outline  btn-error ms-1"
-                >
-                  <div
-                    className="tooltip tooltip-accent tooltip-right"
-                    data-tip="Remove Time"
+                <div className="flex flex-row justify-around  items-center">
+                  <label className="font-medium text-md">Medicine Time</label>
+                  <input
+                    type="time"
+                    placeholder="Time"
+                    className="p-1 w-1/2 rounded-md mt-3 h-[30px]  mb-3 text-black border border-[#1d2939]"
+                    value={time}
+                    onChange={e =>
+                      handleTimeChange(e, medicineIndex, timeIndex)
+                    }
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleRemoveNewTime(medicineIndex, timeIndex)
+                    }
+                    className="btn btn-sm  btn-outline  btn-error "
                   >
-                    <FaCalendarTimes></FaCalendarTimes>
-                  </div>
-                </button>
+                    <div
+                      className="tooltip tooltip-accent tooltip-top"
+                      data-tip="Remove Time"
+                    >
+                      <FaCalendarTimes></FaCalendarTimes>
+                    </div>
+                  </button>
+                </div>
               </div>
             ))}
-            <div className="flex flex-row ">
+            <div className="flex flex-row justify-evenly space-x-3 mt-4 items-center">
               <button
                 type="button"
                 onClick={() => handleAddNewTime(medicineIndex)}
-                className=" ms-1  "
+                className=" btn btn-sm w-1/3 ms-1 bg-teal-700 text-white "
               >
-                <div
-                  className=" tooltip tooltip-accent tooltip-top"
-                  data-tip="Add Time"
-                >
-                  <MdAlarmAdd className="py-1 mt-1 mx-2 rounded-full w-10 h-10 text-teal-500 bg-white hover:bg-blue-950 hover:text-white"></MdAlarmAdd>
-                </div>
+                {" "}
+                Add Time
               </button>
               <button
                 type="button"
                 onClick={() => handleRemoveMedicine(medicineIndex)}
-                className=" me-2  "
+                className=" btn btn-sm ms-1  bg-blue-950 text-white "
               >
-                <div
-                  className="tooltip tooltip-accent tooltip-right"
-                  data-tip="Rrmove Medicine"
-                >
-                  <BsTrash3Fill className="py-1 mt-1 rounded-full w-9 h-8 text-teal-500 bg-white hover:bg-blue-950  hover:text-white"></BsTrash3Fill>
-                </div>
+                Remove Medicine{" "}
               </button>
             </div>
           </div>
         ))}
-        <button
-          type="button"
-          onClick={handleAddMedicine}
-          className="text-white btn-sm btn btn-outline bg-blue-950 ms-1 me-2 hover:bg-teal-500"
-        >
-          <div
-            className="mx-5 tooltip tooltip-accent tooltip-top"
-            data-tip="Add New Medicine"
+
+        {/* submit btn */}
+        <div className=" flex flex-row mt-5  justify-center">
+          <button
+            type="button"
+            onClick={handleAddMedicine}
+            className="text-white btn-sm btn  w-2/5 btn-outline bg-blue-950 mb-2  hover:bg-teal-500"
           >
-            {" "}
-            <MdAddCard fontSize="sm" />
-          </div>
-        </button>
-        <button
-          type="submit"
-          className="text-white bg-blue-950 btn btn-sm  mt-4 ms-2 mb-5 hover:bg-teal-500"
-        >
-          Submit
-        </button>
+            <div
+              className="mx-4 tooltip tooltip-accent tooltip-top"
+              data-tip="Add New Medicine"
+            >
+              {" "}
+              <MdAddCard fontSize="sm" />
+            </div>
+          </button>
+          <button
+            type="submit"
+            className="text-white bg-blue-950 btn btn-sm w-2/5 ms-2 hover:bg-teal-500"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -2,17 +2,17 @@ import React, {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../Providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import {FaTrash} from "react-icons/fa";
+
 const DoctorsList = () => {
   const {user} = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
   const [doctors, setDoctors] = useState([]);
-  // console.log(`https://glycemist-server.onrender.com/alldoctors?email=${user?.email}`);
+  // console.log(`http://localhost:5000/alldoctors?email=${user?.email}`);
   // function to get users
   const fetchDoctorsData = () => {
     setIsLoading(true);
-    fetch(
-      `https://glycemist-server.onrender.com/alldoctors?email=${user?.email}`
-    )
+    fetch(`http://localhost:5000/alldoctors?email=${user?.email}`)
       .then(response => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -34,10 +34,10 @@ const DoctorsList = () => {
     fetchDoctorsData();
   }, []);
 
-  // approve doctor
+  // ----------------------------------------approve doctor
   const approveDoctor = doc => {
     axios
-      .patch(`https://glycemist-server.onrender.com/doctors/${doc._id}`, {
+      .patch(`http://localhost:5000/doctors/${doc._id}`, {
         status: "approved",
         clicked: true,
       })
@@ -57,6 +57,31 @@ const DoctorsList = () => {
         // Handle errors here
         console.log("Error:", error);
       });
+  };
+
+  // -----------------------------------------------delete----------------------------------------------
+  const handleDelete = doc => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "rgb(15 118 110)",
+      cancelButtonColor: "rgb(248 113 113)",
+      confirmButtonText: "Yes, delete it!",
+    }).then(result => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:5000/deletedoctor/${doc._id}`)
+          .then(response => {
+            const {data} = response;
+            if (data.deletedCount > 0) {
+              fetchDoctorsData();
+              Swal.fire("Deleted!", "Your class has been deleted.", "success");
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -86,6 +111,8 @@ const DoctorsList = () => {
               <th className="text-center">Email</th>
               <th className="text-center">Role</th>
               <th className="text-center">Status</th>
+              <th className="text-center">Approve</th>
+              <th className="text-center">Delete</th>
             </tr>
           </thead>
           <tbody className=" bg-white">
@@ -128,6 +155,16 @@ const DoctorsList = () => {
                     }
                   >
                     Approve Doctor
+                  </button>
+                </td>
+
+                <td>
+                  <button
+                    className="btn btn-ghost   text-white me-3 mt-2"
+                    onClick={() => handleDelete(doc)}
+                    // disabled={clas?.clicked === true}
+                  >
+                    <FaTrash className="text-orange-300 bg-transparent  hover:text-red-500 text-3xl" />
                   </button>
                 </td>
               </tr>

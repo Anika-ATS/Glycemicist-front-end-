@@ -62,9 +62,9 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "dashboard",
+    path: "/dashboard",
     element: (
-      <PrivateRoute message="to use the dashboard facilities">
+      <PrivateRoute message="to avail Dashboard">
         <Dashboard />
       </PrivateRoute>
     ),
@@ -73,9 +73,9 @@ export const router = createBrowserRouter([
         // admin
         path: "Allusers",
         element: (
-          // <AdminRoute>
-          <AllUsers />
-          // </AdminRoute>
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
         ),
       },
       {
@@ -101,11 +101,10 @@ export const router = createBrowserRouter([
       {
         path: "Allappointments",
         element: (
-          // // <DoctorRoute>
-          //   {" "}
-          //  <PatientAppointment>
-          // // </DoctorRoute>
-          <PatientAppointment></PatientAppointment>
+          <DoctorRoute>
+            {" "}
+            <PatientAppointment />
+          </DoctorRoute>
         ),
       },
 
@@ -137,33 +136,4 @@ export const router = createBrowserRouter([
       },
     ],
   },
-
-  // {
-  //   path: "DoctorDashboard",
-  //   element: (
-  //     <DoctorRoute>
-  //       <DoctorDashboard />
-  //     </DoctorRoute>
-  //   ),
-  //   children: [
-  //     //  doctor
-  //     {
-  //       path: "Allpatients",
-  //       element: (
-  //         <DoctorRoute>
-  //           <AllPatients />
-  //         </DoctorRoute>
-  //       ),
-  //     },
-  //     {
-  //       path: "Allappointments",
-  //       element: (
-  //         <DoctorRoute>
-  //           {" "}
-  //           <PatientAppointment />
-  //         </DoctorRoute>
-  //       ),
-  //     },
-  //   ],
-  // },
 ]);

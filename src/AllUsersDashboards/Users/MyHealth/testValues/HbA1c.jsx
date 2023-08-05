@@ -37,7 +37,7 @@ const HbA1c = () => {
   const fetchHBHealthData = async () => {
     try {
       const response = await fetch(
-        `https://glycemist-server.onrender.com/myhealth/${user?.email}`
+        `http://localhost:5000/myhealth/${user?.email}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -58,7 +58,7 @@ const HbA1c = () => {
   const onSubmitHb = data => {
     console.log(data);
     axios
-      .patch(`https://glycemist-server.onrender.com/patient/${user?.email}`, {
+      .patch(`http://localhost:5000/patient/${user?.email}`, {
         HbA1c: data.hb,
         date: data.time,
       })
@@ -119,7 +119,9 @@ const HbA1c = () => {
           </ResponsiveContainer>
         </div>
       ) : (
-        <h1>No data yet</h1>
+        <h1 className="text-lg my-3 text-teal-700 font-medium">
+          No Data found for chart
+        </h1>
       )}
       <div className="card shadow-lg p-3 border w-4/5">
         <h1 className="mt-3 px-2  shadow-2xl group-hover:text-white text-xl mx-auto text-[#163750] font-semibold ">

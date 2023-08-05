@@ -14,7 +14,7 @@ const SectionTitle = ({Heading, subHeading, background, fontSize}) => {
         </div>
       )}
       <h3
-        className={`${fontSize} text-2xl text-[#1d2939] uppercase border-b-4 border-[#64d9b9] py-4`}
+        className={`${fontSize} text-2xl text-[#1d2939] uppercase border-b-4 border-[#64d9b9] py-4 border w-1/2 mx-auto border-t-0 border-l-0 border-r-0`}
       >
         {Heading}
       </h3>

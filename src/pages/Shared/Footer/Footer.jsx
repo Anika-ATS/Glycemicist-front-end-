@@ -26,15 +26,6 @@ const Footer = () => {
           </div>
 
           <div className="grid gird-rows-2">
-            {/* <h1 className='font-bold text-[#64d9b9] '>Services:</h1> */}
-            {/* <div className='me-2 mt-5  text-xl grid grid-flow-col gap-6 text-[#64d9b9]    font-bold'>
-                        <Link to='/'>Home</Link>
-                        <Link to='/dashboard' >Dashboard</Link>
-                        <Link to='/allDoctors'>All Doctors</Link>
-                        <Link to='/prediction'>Diabetis Prediction</Link>
-
-                        <Link to='/login'>Login</Link>
-                    </div> */}
             <div className="mt-5 badge border border-[#64d9b9] text-white text-xl grid grid-flow-col gap-6  w-full h-[200px] bg-[#1d2939]">
               <div className="flex flex-col">
                 <p className="mx-5 mt-3 font-bold  text-[#64d9b9]">

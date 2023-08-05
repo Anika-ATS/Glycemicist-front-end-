@@ -77,7 +77,7 @@ const BP = () => {
   const onSubmit = data => {
     console.log(data);
     axios
-      .patch(`https://glycemist-server.onrender.com/patient/${user?.email}`, {
+      .patch(`http://localhost:5000/patient/${user?.email}`, {
         systolic: data.sysp,
         diastolic: data.dysp,
         date: data.time,
@@ -100,9 +100,9 @@ const BP = () => {
         console.log("Error:", error);
       });
   };
-  console.log(`https://glycemist-server.onrender.com/myhealth/${user?.email}`);
+  console.log(`http://localhost:5000/myhealth/${user?.email}`);
   function fetchBloodPressure() {
-    fetch(`https://glycemist-server.onrender.com/myhealth/${user?.email}`)
+    fetch(`http://localhost:5000/myhealth/${user?.email}`)
       .then(response => response.json())
       .then(data => {
         setBloodPressureData(data.bloodPressure);
@@ -112,7 +112,7 @@ const BP = () => {
   }
 
   useEffect(() => {
-    fetch(`https://glycemist-server.onrender.com/myhealth/${user?.email}`)
+    fetch(`http://localhost:5000/myhealth/${user?.email}`)
       .then(response => response.json())
       .then(data => {
         setBloodPressureData(data.bloodPressure);

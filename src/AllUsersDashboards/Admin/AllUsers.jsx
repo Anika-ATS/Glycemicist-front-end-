@@ -14,14 +14,14 @@ const AllUsers = () => {
       try {
         setIsLoading(true);
         const response = await fetch(
-          // `https://glycemist-server.onrender.com/users?email=${user?.email}`
-          `https://glycemist-server.onrender.com/users?email=${user?.email}`
+          // `http://localhost:5000/users?email=${user?.email}`
+          `http://localhost:5000/users?email=${user?.email}`
         );
 
         if (response.ok) {
           const data = await response.json();
           setAllUsers(data);
-          console.log(allusers);
+          console.log(data);
         }
       } catch {
         error => console.log(error);
@@ -50,7 +50,7 @@ const AllUsers = () => {
         </div>
       )}
       <div className="overflow-x-auto rounded-lg">
-        <table className="table md:w-4/5 mx-auto rounded-xl bg-gray-200">
+        <table className="table md:w-4/5 mx-auto rounded-xl bg-gray-200 mb-20">
           {/* head */}
           <thead>
             <tr className=" text-lg  text-gray-700 rounded-lg">

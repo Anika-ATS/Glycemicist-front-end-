@@ -7,7 +7,7 @@ const useAllDoctors = () => {
   const [isAllDoctorsLoading, setIsAllDoctorsLoading] = useState(true);
   useEffect(() => {
     setIsAllDoctorsLoading(true);
-    // fetch(`https://glycemist-server.onrender.com/doctors?email=${user?.email}`)
+    // fetch(`http://localhost:5000/doctors?email=${user?.email}`)
     fetch(`http://localhost:5000/doctors`)
       .then(response => {
         if (!response.ok) {

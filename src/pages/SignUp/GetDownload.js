@@ -1,6 +1,9 @@
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 // import {storage} from "../../../firebase/firebase.config";
 import {storage} from "../../firebase/firebase.config";
+
+import React from "react";
+
 async function GetDownloadUrl(file) {
   const storageRef = ref(storage, `profileimages/${file.name}`);
   const uploadTask = uploadBytesResumable(storageRef, file);
@@ -11,6 +14,7 @@ async function GetDownloadUrl(file) {
   uploadTask.on("state_changed", snapshot => {
     // You can handle progress here if needed
     progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
     console.log("Upload is " + progress + "% done");
   });
 

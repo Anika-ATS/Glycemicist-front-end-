@@ -18,7 +18,7 @@ const MyHealth = () => {
   return (
     <div className="">
       <button
-        className="btn bg-blue-950  outline-[#64D9B9] hover:bg-[#64D9B9] text-[#64D9B9] hover:text-white float-right mt-0"
+        className="btn bg-blue-950  outline-[#64D9B9] hover:bg-[#64D9B9] text-[#64D9B9] hover:text-white md:float-right mt-0"
         onClick={handleGenerateReportClick}
       >
         Generate Report
