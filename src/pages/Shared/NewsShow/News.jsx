@@ -31,7 +31,6 @@ const News = () => {
       <div>
         <SectionTitle
           subHeading={"Explore Latest Diabetes News!"}
-          Heading={"Diabetis News Section"}
         ></SectionTitle>
       </div>
       <div className="bg-[#e8f4f4]  grid grid-cols-1 md:grid-cols-3 gap-2 mb-12">
